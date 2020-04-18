@@ -1,0 +1,23 @@
+{
+  "header": "Sumory",
+  "shuffle": "Zahlen neu sortieren",
+  "assignvalues": "Neues Zahlen-Set",
+  "strategies": "Strategie berechnen",
+  "showall": "Zahlen anzeigen (und editieren)",
+  "shuffle-restaurants": "Köche zufällig vertauschen",
+  "assignvalues-restaurants": "neue Köche einfliegen",
+  "strategies-restaurants": "Strategie berechnen",
+  "showall-restaurants": "alle Bewertungen anzeigen (und verändern)",
+  "sum": "Summe",
+  "draws": "Spielzüge",
+  "description-0": "Erkl&auml;rung: Hinter jeder Karte befindet sich eine Zahl.<br> Jede Zahl, die du anklickst oder tippst, wird zu deiner Summe addiert.<br> Du kannst ",
+  "description-1": " Zahlen antippen, um die h&ouml;chstm&ouml;gliche Summe zu erreichen.<br> Eine bereits aufgedeckte Zahl kannst du auch mehrmals antippen.",
+  "description-0-restaurants": "Du bist für ",
+  "description-1-restaurants": " Tage in einer fremden Stadt und möchtest jeden Abend einmal essen gehen.<br> Wenn du ein Restaurant anklickst oder antippst, besuchst du ein Restaurant und die Anzahl der Sterne wird zu deiner Summe addiert.<br> Du möchtest deinen Genuss maximieren und daher eine h&ouml;chstm&ouml;gliche Summe erreichen.<br> Bereits besuchte Restaurants können erneut besucht werden.",
+  "final-result": "Endergebnis:",
+  "better-0": "Dies ist um",
+  "better-1": "<em>besser</em> als die durchschnittlich beste Strategie.",
+  "worse-0": "Dies ist um",
+  "worse-1": "<em>schlechter</em> als die durchschnittlich beste Strategie.",
+  "avg-for": "Durchschnitt für"
+}

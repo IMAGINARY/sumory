@@ -1,0 +1,13 @@
+.sumory-analysis {
+  .sumory-analysis-text {
+    font-size: 2em;
+    margin-bottom: 2em;
+  }
+
+  .sumory-analysis-chart {
+    canvas {
+      width: 100% !important;
+      height: 50vh !important;
+    }
+  }
+}

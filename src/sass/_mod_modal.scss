@@ -1,0 +1,45 @@
+body.with-modal {
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.s-modal {
+  position: fixed;
+  width: 80%;
+  max-height: 80%;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  border: 0.5vw solid #666;
+  border-radius: 1.5em;
+  padding: 2em;
+  background-color: $color-black;
+
+  &.s-modal-with-close {
+    padding-top: 4em;
+  }
+
+  .s-modal-content {
+    overflow: auto;
+  }
+
+  .s-modal-close {
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    color: $color-white;
+    font-size: 2em;
+  }
+}

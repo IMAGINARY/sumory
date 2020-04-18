@@ -1,0 +1,23 @@
+{
+  "header": "Sumory",
+  "shuffle": "shuffle cards",
+  "assignvalues": "generate new cards",
+  "strategies": "calculate strategy",
+  "showall": "show (and edit) numbers",
+  "shuffle-restaurants": "exchange chefs randomly",
+  "assignvalues-restaurants": "fly in new chefs",
+  "strategies-restaurants": "calculate strategy",
+  "showall-restaurants": "show (and edit) ratings",
+  "sum": "sum",
+  "draws": "draws",
+  "description-0": "Explanation: Behind each card is a number.<br> Any number you click or touch will be added to your total.<br> You can tap ",
+  "description-1": " numbers in order to reach the highest possible amount.<br>You can also tap a number that has already been revealed several times.",
+  "description-0-restaurants": "You are in a foreign city for ",
+  "description-1-restaurants": " days and want to go out for dinner every evening.<br> When you click or tap on a restaurant, you visit a restaurant and the number of stars is added to your sum.<br> You want to maximize your enjoyment and therefore reach the highest possible sum.<br> Already visited restaurants can be visited again.",
+  "final-result": "Final result:",
+  "better-0": "This is",
+  "better-1": "<em>better</em> than the average best strategy.",
+  "worse-0": "This is",
+  "worse-1": "<em>worse</em> than the average best strategy.",
+  "avg-for": "average for"
+}

@@ -1,0 +1,55 @@
+.sumory-board {
+  text-align: center;
+  position: absolute;
+  top: 200px;
+}
+
+$sumory-card-size: 11vw;
+$sumory-card-spacing: 0.8vw;
+
+.sumory-card {
+  position: relative;
+  display: inline-block;
+  width: $sumory-card-size;
+  height: $sumory-card-size;
+  margin: $sumory-card-spacing;
+  border: 0.5vw solid $color-gray;
+  border-radius: 10%;
+  cursor: pointer;
+
+  &.visible {
+    border-color: $color-yellow;
+    background-color: $color-gray-dark;
+  }
+
+  .value, .value-ghost {
+    position: absolute;
+    font-size: $sumory-card-size * 0.375;
+    line-height: $sumory-card-size * 0.9;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .value-ghost {
+    pointer-events: none;
+  }
+
+  @keyframes vanish-up {
+    from {
+      top: 0;
+      opacity: 1;
+    }
+
+    to {
+      top: -50%;
+      opacity: 0;
+    }
+  }
+
+  .value-ghost {
+    animation: vanish-up 2s ease-out forwards;
+  }
+}

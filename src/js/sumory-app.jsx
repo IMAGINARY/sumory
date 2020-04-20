@@ -11,19 +11,24 @@ export default function SumoryApp(props) {
   const CARD_COUNT = 21;
   const TURNS = 7;
   const { config } = props;
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState(config.defaultLanguage || 'en');
   const [strings, setStrings] = useState({});
   const [cardValues, setCardValues] = useState(generateValues(CARD_COUNT));
   const [gameNumber, setGameNumber] = useState(1);
   const [finalScore, setFinalScore] = useState(null);
 
   useEffect(() => {
-    if (IMAGINARY.i18n.getLang() !== language) {
-      IMAGINARY.i18n.setLang(language).then(() => {
-        setStrings(IMAGINARY.i18n.getStrings());
-      });
-    }
-  });
+    IMAGINARY.i18n.setLang(language).then(() => {
+      setStrings(IMAGINARY.i18n.getStrings());
+    });
+  }, [] /* Run on first render only */);
+
+  const handleLanguageChange = (code) => {
+    setLanguage(code);
+    IMAGINARY.i18n.setLang(code).then(() => {
+      setStrings(IMAGINARY.i18n.getStrings());
+    });
+  };
 
   const handleGameOver = (sum) => {
     setTimeout(() => { setFinalScore(sum); }, 2000);
@@ -33,10 +38,6 @@ export default function SumoryApp(props) {
     setFinalScore(null);
     setGameNumber(gameNumber + 1);
     setCardValues(generateValues(CARD_COUNT));
-  };
-
-  const handleModalClose = () => {
-    restart();
   };
 
   return (
@@ -62,15 +63,18 @@ export default function SumoryApp(props) {
           </button>
         </div>
         <div className="right">
-          <Dropdown
-            className="lang-switcher"
-            items={config.languages}
-            selected={language}
-            onSelect={(code) => { setLanguage(code); }}
-          >
-            <span className="fas fa-caret-left mr-2" />
-            <span className="fas fa-language fa-2x mr-2" />
-          </Dropdown>
+          { Object.entries(config.languages).length > 1 && (
+            <Dropdown
+              className="lang-switcher"
+              items={config.languages}
+              selected={language}
+              onSelect={(code) => { handleLanguageChange(code); }}
+            >
+              <span className="fas fa-caret-left mr-2" />
+              <span className="fas fa-language fa-2x mr-2" />
+            </Dropdown>
+          )
+          }
         </div>
       </div>
       {
@@ -100,5 +104,6 @@ export default function SumoryApp(props) {
 SumoryApp.propTypes = {
   config: PropTypes.shape({
     languages: PropTypes.objectOf(PropTypes.string).isRequired,
+    defaultLanguage: PropTypes.string,
   }).isRequired,
 };

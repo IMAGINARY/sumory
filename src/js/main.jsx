@@ -1,16 +1,21 @@
 /* globals IMAGINARY */
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import 'core-js/stable'; // ES Polyfills, include only if needed... around 200k minimized!
+import 'fetch-ie8';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SumoryApp from './sumory-app';
-import config from './config.json';
 
-$(() => {
+fetch('./config.json').then((response) => {
+  if (response.status >= 200 && response.status < 300) {
+    return response.json();
+  }
+  throw new Error(`Server returned status ${response.status} (${response.statusText}) loading config file.`);
+}).then(config => (
   IMAGINARY.i18n.init({
     queryStringVariable: 'lang',
     translationsDirectory: 'tr',
-    defaultLanguage: config.defaultLanguage,
+    defaultLanguage: 'en',
   }).then(() => {
     $('[data-component="SumoryApp"]').each((i, element) => {
       ReactDOM.render(
@@ -18,7 +23,8 @@ $(() => {
         element
       );
     });
-  }).catch((err) => {
-    console.error(err);
-  });
+  })
+)).catch((err) => {
+  // eslint-disable-next-line no-console
+  console.error(err);
 });

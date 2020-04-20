@@ -9,7 +9,7 @@ import SumoryAnalysis from './sumory-analysis';
 
 export default function SumoryApp(props) {
   const CARD_COUNT = 21;
-  const TURNS = 7;
+  const TURNS = 10;
   const { config } = props;
   const [language, setLanguage] = useState(config.defaultLanguage || 'en');
   const [strings, setStrings] = useState({});

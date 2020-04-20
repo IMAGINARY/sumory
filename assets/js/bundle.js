@@ -948,7 +948,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function SumoryApp(props) {
   var CARD_COUNT = 21;
-  var TURNS = 7;
+  var TURNS = 10;
   var config = props.config;
 
   var _useState = (0, _react.useState)(config.defaultLanguage || 'en'),

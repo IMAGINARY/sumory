@@ -63,35 +63,6 @@ body.lock-position {
   width: 100%;
   position: fixed; }
 
-.sumory-container, .sumory-app {
-  width: 100%;
-  height: 100%;
-  position: relative; }
-
-.util-menu {
-  height: 5em;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0; }
-  .util-menu .left, .util-menu .right {
-    display: inline-block;
-    width: 50%;
-    padding: 0.8em 1em; }
-  .util-menu .right {
-    text-align: right; }
-
-.status {
-  font-size: 3em; }
-  .status .status-sum, .status .status-turns {
-    display: inline-block;
-    width: 50%;
-    padding: 0.5em 0.6em 0; }
-  .status .status-sum {
-    text-align: left; }
-  .status .status-turns {
-    text-align: right; }
-
 html, body {
   width: 100%;
   height: 100%;
@@ -200,12 +171,13 @@ body.with-modal {
   width: 11vw;
   height: 11vw;
   margin: 0.8vw;
-  border: 0.5vw solid #666;
+  border: 0.5vw solid #444;
+  background-color: #444;
   border-radius: 10%;
   cursor: pointer; }
   .sumory-card.visible {
-    border-color: #ffec02;
-    background-color: #444; }
+    border-color: #fff797;
+    background-color: #fff797; }
   .sumory-card .value, .sumory-card .value-ghost {
     position: absolute;
     font-size: 4.125vw;
@@ -235,5 +207,61 @@ body.with-modal {
 .sumory-analysis .sumory-analysis-chart canvas {
   width: 100% !important;
   height: 50vh !important; }
+
+.sumory-container, .sumory-app {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+
+.instructions {
+  position: absolute;
+  width: 80%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 2.6em;
+  padding: 0.5em 2em; }
+
+.util-menu {
+  height: 5em;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+  .util-menu .left, .util-menu .right {
+    display: inline-block;
+    width: 50%;
+    padding: 0.8em 1em; }
+  .util-menu .right {
+    text-align: right; }
+
+.status {
+  position: absolute;
+  width: 20%;
+  top: 0;
+  right: 0; }
+
+.status-box {
+  position: relative;
+  display: inline-block;
+  width: 10em;
+  margin-left: 1em; }
+  .status-box:first-child {
+    margin-left: 0; }
+  .status-box .value {
+    position: absolute;
+    width: 100%;
+    height: 1.5em;
+    text-align: center;
+    font-size: 3em;
+    line-height: 1.5; }
+  .status-box .label {
+    position: absolute;
+    top: 3.1em;
+    width: 100%;
+    font-size: 1.6em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #a5a5a5; }
 
 /*# sourceMappingURL=default.css.map */

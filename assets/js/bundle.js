@@ -971,11 +971,20 @@ function SumoryApp(props) {
       gameNumber = _useState8[0],
       setGameNumber = _useState8[1];
 
-  var _useState9 = (0, _react.useState)(null),
+  var _useState9 = (0, _react.useState)({
+    score: 0,
+    turnsLeft: TURNS
+  }),
       _useState10 = _slicedToArray(_useState9, 2),
-      finalScore = _useState10[0],
-      setFinalScore = _useState10[1];
+      gameStatus = _useState10[0],
+      setGameStatus = _useState10[1];
 
+  var _useState11 = (0, _react.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      analysisVisible = _useState12[0],
+      setAnalysisVisible = _useState12[1];
+
+  var instructions = strings.instructions && strings.instructions.replace('%turns', TURNS) || '';
   (0, _react.useEffect)(function () {
     IMAGINARY.i18n.setLang(language).then(function () {
       setStrings(IMAGINARY.i18n.getStrings());
@@ -984,36 +993,60 @@ function SumoryApp(props) {
   /* Run on first render only */
   );
 
-  var handleLanguageChange = function handleLanguageChange(code) {
+  function handleLanguageChange(code) {
     setLanguage(code);
     IMAGINARY.i18n.setLang(code).then(function () {
       setStrings(IMAGINARY.i18n.getStrings());
     });
-  };
+  }
 
-  var handleGameOver = function handleGameOver(sum) {
-    setTimeout(function () {
-      setFinalScore(sum);
-    }, 2000);
-  };
+  function handleGameUpdate(newSum, newTurnsLeft) {
+    setGameStatus({
+      score: newSum,
+      turnsLeft: newTurnsLeft
+    });
 
-  var restart = function restart() {
-    setFinalScore(null);
+    if (newTurnsLeft === 0) {
+      setTimeout(function () {
+        setAnalysisVisible(true);
+      }, 1000);
+    }
+  }
+
+  function restart() {
+    setAnalysisVisible(false);
     setGameNumber(gameNumber + 1);
+    setGameStatus({
+      score: 0,
+      turnsLeft: TURNS
+    });
     setCardValues((0, _sumoryRandom.generateValues)(CARD_COUNT));
-  };
+  }
 
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-app"
-  }, /*#__PURE__*/_react["default"].createElement("h1", {
-    className: "text-center"
-  }, strings.header), /*#__PURE__*/_react["default"].createElement(_sumoryGame["default"], {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "instructions"
+  }, instructions), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "status"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "status-box status-turns"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "label"
+  }, strings.draws), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "value"
+  }, gameStatus.turnsLeft)), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "status-box status-sum"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "label"
+  }, strings.sum), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "value"
+  }, gameStatus.score))), /*#__PURE__*/_react["default"].createElement(_sumoryGame["default"], {
     key: gameNumber,
-    config: config,
     strings: strings,
     values: cardValues,
     turns: TURNS,
-    onGameOver: handleGameOver
+    onUpdate: handleGameUpdate
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "util-menu"
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -1039,14 +1072,14 @@ function SumoryApp(props) {
     className: "fas fa-caret-left mr-2"
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: "fas fa-language fa-2x mr-2"
-  })))), finalScore && /*#__PURE__*/_react["default"].createElement(_modal["default"], {
+  })))), analysisVisible && /*#__PURE__*/_react["default"].createElement(_modal["default"], {
     showCloseButton: false
   }, /*#__PURE__*/_react["default"].createElement(_sumoryAnalysis["default"], {
     config: config,
     strings: strings,
     values: cardValues,
     turns: TURNS,
-    userSum: finalScore
+    userSum: gameStatus.score
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "text-center mt-5"
   }, /*#__PURE__*/_react["default"].createElement("button", {
@@ -1111,33 +1144,35 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function SumoryGame(props) {
   var strings = props.strings,
-      config = props.config,
       values = props.values,
       turns = props.turns,
-      onGameOver = props.onGameOver;
+      onUpdate = props.onUpdate;
 
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      selections = _useState2[0],
-      setSelections = _useState2[1];
+      selectedCards = _useState2[0],
+      setSelectedCards = _useState2[1];
 
-  var gameOver = turns === selections.length;
-  var isLastTurn = turns === selections.length + 1;
-  var sum = selections.reduce(function (total, selection) {
-    return total + values[selection];
-  }, 0);
+  function turnsLeft(selection) {
+    return turns - selection.length;
+  }
 
-  var cardClicked = function cardClicked(i) {
-    if (!gameOver) {
-      setSelections([].concat(_toConsumableArray(selections), [i]));
+  function sum(selection) {
+    return selection.reduce(function (total, cardId) {
+      return total + values[cardId];
+    }, 0);
+  }
 
-      if (isLastTurn) {
-        if (onGameOver) {
-          onGameOver(sum);
-        }
+  function handleCardClicked(i) {
+    if (turnsLeft(selectedCards) !== 0) {
+      var newSelection = [].concat(_toConsumableArray(selectedCards), [i]);
+      setSelectedCards(newSelection);
+
+      if (onUpdate) {
+        onUpdate(sum(newSelection), turnsLeft(newSelection));
       }
     }
-  }; // Allows to use Array functions to repeat something n times
+  } // Allows to use Array functions to repeat something n times
   // by creating an array with n dummy elements
 
 
@@ -1148,32 +1183,24 @@ function SumoryGame(props) {
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-game"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "status"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "status-sum"
-  }, strings.sum, "\xA0", /*#__PURE__*/_react["default"].createElement("span", {
-    className: "value"
-  }, sum)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "status-turns"
-  }, strings.draws, "\xA0", /*#__PURE__*/_react["default"].createElement("span", {
-    className: "value"
-  }, turns - selections.length))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-board"
   }, values.map(function (value, i) {
-    var timesSelected = selections.reduce(function (total, sel) {
+    var timesSelected = selectedCards.reduce(function (total, sel) {
       return total + (sel === i ? 1 : 0);
     }, 0);
     var turned = timesSelected > 0;
     var text = value > 0 ? "+".concat(value) : value;
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("button", {
+      type: "button",
       className: (0, _classnames["default"])('sumory-card', {
         visible: turned
-      }),
+      }) // eslint-disable-next-line react/no-array-index-key
+      ,
       key: i,
-      onClick: cardClicked.bind(null, i)
-    }, /*#__PURE__*/_react["default"].createElement("span", {
+      onClick: handleCardClicked.bind(null, i)
+    }, turned && /*#__PURE__*/_react["default"].createElement("span", {
       className: "value"
-    }, turned ? text : '?'), times(timesSelected).map(function (_, j) {
+    }, text), times(timesSelected).map(function (_, j) {
       return /*#__PURE__*/_react["default"].createElement("span", {
         className: "value-ghost",
         key: j
@@ -1183,14 +1210,13 @@ function SumoryGame(props) {
 }
 
 SumoryGame.propTypes = {
-  config: _propTypes["default"].shape({}).isRequired,
   strings: _propTypes["default"].objectOf(_propTypes["default"].string).isRequired,
   values: _propTypes["default"].arrayOf(_propTypes["default"].number).isRequired,
   turns: _propTypes["default"].number.isRequired,
-  onGameOver: _propTypes["default"].func
+  onUpdate: _propTypes["default"].func
 };
 SumoryGame.defaultProps = {
-  onGameOver: null
+  onUpdate: null
 };
 
 },{"classnames":11,"prop-types":391,"react":401}],11:[function(require,module,exports){

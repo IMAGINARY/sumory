@@ -15,7 +15,10 @@ export default function SumoryApp(props) {
   const [strings, setStrings] = useState({});
   const [cardValues, setCardValues] = useState(generateValues(CARD_COUNT));
   const [gameNumber, setGameNumber] = useState(1);
-  const [finalScore, setFinalScore] = useState(null);
+  const [gameStatus, setGameStatus] = useState({ score: 0, turnsLeft: TURNS });
+  const [analysisVisible, setAnalysisVisible] = useState(false);
+
+  const instructions = (strings.instructions && strings.instructions.replace('%turns', TURNS)) || '';
 
   useEffect(() => {
     IMAGINARY.i18n.setLang(language).then(() => {
@@ -23,33 +26,46 @@ export default function SumoryApp(props) {
     });
   }, [] /* Run on first render only */);
 
-  const handleLanguageChange = (code) => {
+  function handleLanguageChange(code) {
     setLanguage(code);
     IMAGINARY.i18n.setLang(code).then(() => {
       setStrings(IMAGINARY.i18n.getStrings());
     });
-  };
+  }
 
-  const handleGameOver = (sum) => {
-    setTimeout(() => { setFinalScore(sum); }, 2000);
-  };
+  function handleGameUpdate(newSum, newTurnsLeft) {
+    setGameStatus({ score: newSum, turnsLeft: newTurnsLeft });
+    if (newTurnsLeft === 0) {
+      setTimeout(() => { setAnalysisVisible(true); }, 1000);
+    }
+  }
 
-  const restart = () => {
-    setFinalScore(null);
+  function restart() {
+    setAnalysisVisible(false);
     setGameNumber(gameNumber + 1);
+    setGameStatus({ score: 0, turnsLeft: TURNS });
     setCardValues(generateValues(CARD_COUNT));
-  };
+  }
 
   return (
     <div className="sumory-app">
-      <h1 className="text-center">{strings.header}</h1>
+      <div className="instructions">{ instructions }</div>
+      <div className="status">
+        <div className="status-box status-turns">
+          <div className="label">{strings.draws}</div>
+          <div className="value">{gameStatus.turnsLeft}</div>
+        </div>
+        <div className="status-box status-sum">
+          <div className="label">{strings.sum}</div>
+          <div className="value">{gameStatus.score}</div>
+        </div>
+      </div>
       <SumoryGame
         key={gameNumber}
-        config={config}
         strings={strings}
         values={cardValues}
         turns={TURNS}
-        onGameOver={handleGameOver}
+        onUpdate={handleGameUpdate}
       />
       <div className="util-menu">
         <div className="left">
@@ -78,7 +94,7 @@ export default function SumoryApp(props) {
         </div>
       </div>
       {
-        finalScore
+        analysisVisible
         && (
           <Modal showCloseButton={false}>
             <SumoryAnalysis
@@ -86,7 +102,7 @@ export default function SumoryApp(props) {
               strings={strings}
               values={cardValues}
               turns={TURNS}
-              userSum={finalScore}
+              userSum={gameStatus.score}
             />
             <div className="text-center mt-5">
               <button type="button" className="s-btn" onClick={() => { restart(); }}>

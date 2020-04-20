@@ -4,24 +4,27 @@ import classnames from 'classnames';
 
 export default function SumoryGame(props) {
   const {
-    strings, config, values, turns, onGameOver,
+    strings, values, turns, onUpdate,
   } = props;
-  const [selections, setSelections] = useState([]);
+  const [selectedCards, setSelectedCards] = useState([]);
 
-  const gameOver = (turns === selections.length);
-  const isLastTurn = (turns === selections.length + 1);
-  const sum = selections.reduce((total, selection) => total + values[selection], 0);
+  function turnsLeft(selection) {
+    return turns - selection.length;
+  }
 
-  const cardClicked = (i) => {
-    if (!gameOver) {
-      setSelections([...selections, i]);
-      if (isLastTurn) {
-        if (onGameOver) {
-          onGameOver(sum);
-        }
+  function sum(selection) {
+    return selection.reduce((total, cardId) => total + values[cardId], 0);
+  }
+
+  function handleCardClicked(i) {
+    if (turnsLeft(selectedCards) !== 0) {
+      const newSelection = [...selectedCards, i];
+      setSelectedCards(newSelection);
+      if (onUpdate) {
+        onUpdate(sum(newSelection), turnsLeft(newSelection));
       }
     }
-  };
+  }
 
   // Allows to use Array functions to repeat something n times
   // by creating an array with n dummy elements
@@ -29,29 +32,25 @@ export default function SumoryGame(props) {
 
   return (
     <div className="sumory-game">
-      <div className="status">
-        <div className="status-sum">
-          {strings.sum}
-          &nbsp;
-          <span className="value">{sum}</span>
-        </div>
-        <div className="status-turns">
-          {strings.draws}
-          &nbsp;
-          <span className="value">{turns - selections.length}</span>
-        </div>
-      </div>
       <div className="sumory-board">
         {
           values.map((value, i) => {
-            const timesSelected = selections.reduce((total, sel) => total + (sel === i ? 1 : 0), 0);
+            const timesSelected = selectedCards
+              .reduce((total, sel) => total + (sel === i ? 1 : 0), 0);
             const turned = timesSelected > 0;
             const text = value > 0 ? `+${value}` : value;
             return (
-              <div className={classnames('sumory-card', { visible: turned })} key={i} onClick={cardClicked.bind(null, i)}>
-                <span className="value">{ turned ? text : '?' }</span>
+              <button
+                type="button"
+                className={classnames('sumory-card', { visible: turned })}
+                // eslint-disable-next-line react/no-array-index-key
+                key={i}
+                onClick={handleCardClicked.bind(null, i)}
+              >
+                { turned && <span className="value">{ text }</span> }
+                {/* eslint-disable-next-line react/no-array-index-key */}
                 { times(timesSelected).map((_, j) => <span className="value-ghost" key={j}>{ text }</span>) }
-              </div>
+              </button>
             );
           })
         }
@@ -61,14 +60,12 @@ export default function SumoryGame(props) {
 }
 
 SumoryGame.propTypes = {
-  config: PropTypes.shape({
-  }).isRequired,
   strings: PropTypes.objectOf(PropTypes.string).isRequired,
   values: PropTypes.arrayOf(PropTypes.number).isRequired,
   turns: PropTypes.number.isRequired,
-  onGameOver: PropTypes.func,
+  onUpdate: PropTypes.func,
 };
 
 SumoryGame.defaultProps = {
-  onGameOver: null,
+  onUpdate: null,
 };

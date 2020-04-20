@@ -8,8 +8,8 @@
   "assignvalues-restaurants": "fly in new chefs",
   "strategies-restaurants": "calculate strategy",
   "showall-restaurants": "show (and edit) ratings",
-  "sum": "sum",
-  "draws": "draws",
+  "sum": "total",
+  "draws": "turns left",
   "description-0": "Explanation: Behind each card is a number.<br> Any number you click or touch will be added to your total.<br> You can tap ",
   "description-1": " numbers in order to reach the highest possible amount.<br>You can also tap a number that has already been revealed several times.",
   "description-0-restaurants": "You are in a foreign city for ",
@@ -19,5 +19,6 @@
   "better-1": "<em>better</em> than the average best strategy.",
   "worse-0": "This is",
   "worse-1": "<em>worse</em> than the average best strategy.",
-  "avg-for": "average for"
+  "avg-for": "average for",
+  "instructions": "Flip cards to reveal numbers. You have %turns turns to reach the highest possible sum. You can select an already flipped card as many times as you want."
 }

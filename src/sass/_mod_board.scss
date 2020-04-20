@@ -13,13 +13,14 @@ $sumory-card-spacing: 0.8vw;
   width: $sumory-card-size;
   height: $sumory-card-size;
   margin: $sumory-card-spacing;
-  border: 0.5vw solid $color-gray;
+  border: 0.5vw solid $color-gray-dark;
+  background-color: $color-gray-dark;
   border-radius: 10%;
   cursor: pointer;
 
   &.visible {
-    border-color: $color-yellow;
-    background-color: $color-gray-dark;
+    border-color: $color-yellow-light;
+    background-color: $color-yellow-light;
   }
 
   .value, .value-ghost {

@@ -1,0 +1,74 @@
+.sumory-container, .sumory-app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.instructions {
+  position: absolute;
+  width: 80%;
+  top: 3vh;
+  left: 0;
+  text-align: center;
+  font-size: 2.6em;
+  padding: 0.5em 2em;
+}
+
+.util-menu {
+  height: 5em;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  .lang-switcher {
+
+  }
+
+  .left, .right {
+    display: inline-block;
+    width: 50%;
+    padding: 0.8em 1em;
+  }
+
+  .right {
+    text-align: right;
+  }
+}
+
+.status {
+  position: absolute;
+  width: 20%;
+  top: 3vh;
+  right: 0;
+}
+
+.status-box {
+  position: relative;
+  display: inline-block;
+  width: 10em;
+  margin-left: 1em;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  .value {
+    position: absolute;
+    width: 100%;
+    height: 1.5em;
+    text-align: center;
+    font-size: 3em;
+    line-height: 1.5;
+  }
+
+  .label {
+    position: absolute;
+    top: 3.1em;
+    width: 100%;
+    font-size: 1.6em;
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-gray-light;
+  }
+}

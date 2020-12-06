@@ -17,7 +17,7 @@ html
     link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
     link(rel="stylesheet", href="vendor/fontawesome/css/all.min.css", media="all", type="text/css")
     link(rel="stylesheet", href="vendor/chartjs/Chart.min.css", media="all", type="text/css")
-    link(rel='stylesheet', href='assets/css/default.css', media='all', type='text/css')
+    link(rel='stylesheet', href!=asset('assets/css/default.css'), media='all', type='text/css')
     block stylesheets
     title
       != (title ? title + ' - ' + config.siteName : config.siteName )
@@ -31,5 +31,6 @@ html
     script(type="text/javascript", src="vendor/chartjs/Chart.min.js")
     script(type="text/javascript", src="vendor/chartjs/chartjs-plugin-datalabels.js")
     block scripts
-    script(type="text/javascript", src="assets/js/bundle.min.js")
+    script(type="text/javascript", src!=asset('assets/js/dependencies.min.js'))
+    script(type="text/javascript", src!=asset('assets/js/bundle.min.js'))
     block closing

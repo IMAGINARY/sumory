@@ -216,7 +216,7 @@ body.with-modal {
 .instructions {
   position: absolute;
   width: 80%;
-  top: 0;
+  top: 3vh;
   left: 0;
   text-align: center;
   font-size: 2.6em;
@@ -238,7 +238,7 @@ body.with-modal {
 .status {
   position: absolute;
   width: 20%;
-  top: 0;
+  top: 3vh;
   right: 0; }
 
 .status-box {
@@ -264,4 +264,4 @@ body.with-modal {
     text-transform: uppercase;
     color: #a5a5a5; }
 
-/*# sourceMappingURL=default.css.map */
+/*# sourceMappingURL=default-16c50e309b.css.map */

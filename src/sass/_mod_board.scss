@@ -10,17 +10,48 @@ $sumory-card-spacing: 0.8vw;
 .sumory-card {
   position: relative;
   display: inline-block;
+  vertical-align: top;
   width: $sumory-card-size;
   height: $sumory-card-size;
   margin: $sumory-card-spacing;
-  border: 0.5vw solid $color-gray-dark;
-  background-color: $color-gray-dark;
-  border-radius: 10%;
+  color: $color-black;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+  perspective: 50vw;
+
+  .sumory-card-front, .sumory-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease-in, background-color 0.5s 0.2s;
+    transform-style: preserve-3d;
+    border-radius: 10%;
+  }
+
+  .sumory-card-front {
+    border-color: $color-yellow-light;
+    background-color: #b3b1a0;
+    transform: rotateY(180deg);
+  }
+
+  .sumory-card-back {
+    background-color: $color-gray-dark;
+    border: 0.5vw solid $color-gray-dark;
+    transform: rotateY(0deg);
+  }
 
   &.visible {
-    border-color: $color-yellow-light;
-    background-color: $color-yellow-light;
+    .sumory-card-front {
+      transform: rotateY(0deg);
+      background-color: $color-yellow-light;
+    }
+    .sumory-card-back {
+      transform: rotateY(180deg);
+    }
   }
 
   .value, .value-ghost {
@@ -51,6 +82,10 @@ $sumory-card-spacing: 0.8vw;
   }
 
   .value-ghost {
-    animation: vanish-up 2s ease-out forwards;
+    animation: vanish-up 2s 0.5s ease-out forwards;
+  }
+
+  .value-ghost-imm {
+    animation: vanish-up 2s 0s ease-out forwards;
   }
 }

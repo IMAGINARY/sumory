@@ -47,9 +47,12 @@ export default function SumoryGame(props) {
                 key={i}
                 onClick={handleCardClicked.bind(null, i)}
               >
-                { turned && <span className="value">{ text }</span> }
-                {/* eslint-disable-next-line react/no-array-index-key */}
-                { times(timesSelected).map((_, j) => <span className="value-ghost" key={j}>{ text }</span>) }
+                <div className="sumory-card-front">
+                  <span className="value">{ text }</span>
+                  {/* eslint-disable-next-line react/no-array-index-key */}
+                  { times(timesSelected).map((_, j) => <span className={classnames('value-ghost', { 'value-ghost-imm': timesSelected > 1 })} key={j}>{ text }</span>) }
+                </div>
+                <div className="sumory-card-back"></div>
               </button>
             );
           })

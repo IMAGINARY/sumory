@@ -168,16 +168,38 @@ body.with-modal {
 .sumory-card {
   position: relative;
   display: inline-block;
+  vertical-align: top;
   width: 11vw;
   height: 11vw;
   margin: 0.8vw;
-  border: 0.5vw solid #444;
-  background-color: #444;
-  border-radius: 10%;
-  cursor: pointer; }
-  .sumory-card.visible {
+  color: #202020;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  perspective: 50vw; }
+  .sumory-card .sumory-card-front, .sumory-card .sumory-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease-in, background-color 0.5s 0.2s;
+    transform-style: preserve-3d;
+    border-radius: 10%; }
+  .sumory-card .sumory-card-front {
     border-color: #fff797;
+    background-color: #b3b1a0;
+    transform: rotateY(180deg); }
+  .sumory-card .sumory-card-back {
+    background-color: #444;
+    border: 0.5vw solid #444;
+    transform: rotateY(0deg); }
+  .sumory-card.visible .sumory-card-front {
+    transform: rotateY(0deg);
     background-color: #fff797; }
+  .sumory-card.visible .sumory-card-back {
+    transform: rotateY(180deg); }
   .sumory-card .value, .sumory-card .value-ghost {
     position: absolute;
     font-size: 4.125vw;
@@ -198,7 +220,9 @@ body.with-modal {
     top: -50%;
     opacity: 0; } }
   .sumory-card .value-ghost {
-    animation: vanish-up 2s ease-out forwards; }
+    animation: vanish-up 2s 0.5s ease-out forwards; }
+  .sumory-card .value-ghost-imm {
+    animation: vanish-up 2s 0s ease-out forwards; }
 
 .sumory-analysis .sumory-analysis-text {
   font-size: 2em;
@@ -264,4 +288,4 @@ body.with-modal {
     text-transform: uppercase;
     color: #a5a5a5; }
 
-/*# sourceMappingURL=default-16c50e309b.css.map */
+/*# sourceMappingURL=default-fceb8e85aa.css.map */

@@ -30,7 +30,7 @@ const paths = {
   },
   scripts: {
     src: './js/main.jsx',
-    watchSrc: ['./js/**/*.js', '!./js/dependencies.js'],
+    watchSrc: ['./js/**/*.js', './js/**/*.jsx', '!./js/dependencies.js'],
     dest: `${OUTPUT_DIR}/assets/js`,
     filename: 'bundle',
     clean: [`${OUTPUT_DIR}/assets/js/bundle-??????????.min.js`, `${OUTPUT_DIR}/assets/js/bundle-??????????.min.js.map`],

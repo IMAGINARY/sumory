@@ -775,13 +775,19 @@ function SumoryGame(props) {
       ,
       key: i,
       onClick: handleCardClicked.bind(null, i)
-    }, turned && /*#__PURE__*/_react["default"].createElement("span", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
+      className: "sumory-card-front"
+    }, /*#__PURE__*/_react["default"].createElement("span", {
       className: "value"
     }, text), times(timesSelected).map(function (_, j) {
       return /*#__PURE__*/_react["default"].createElement("span", {
-        className: "value-ghost",
+        className: (0, _classnames["default"])('value-ghost', {
+          'value-ghost-imm': timesSelected > 1
+        }),
         key: j
       }, text);
+    })), /*#__PURE__*/_react["default"].createElement("div", {
+      className: "sumory-card-back"
     }));
   })));
 }

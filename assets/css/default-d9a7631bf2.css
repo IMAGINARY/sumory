@@ -168,7 +168,7 @@ body.with-modal {
   top: 18vmin; }
   @media (max-aspect-ratio: 15 / 9) {
     .sumory-board {
-      top: 24vmin; } }
+      top: 28vmin; } }
 
 .sumory-card {
   position: relative;
@@ -182,6 +182,11 @@ body.with-modal {
   background-color: transparent;
   border: none;
   perspective: 50vw; }
+  @media (max-aspect-ratio: 1 / 1) {
+    .sumory-card {
+      width: 10vmax;
+      height: 10vmax;
+      margin: 0.7vmax; } }
   @media (min-aspect-ratio: 17 / 9) {
     .sumory-card {
       width: 20vmin;
@@ -223,6 +228,10 @@ body.with-modal {
       .sumory-card .value, .sumory-card .value-ghost {
         font-size: 7.5vmin;
         line-height: 18vmin; } }
+    @media (max-aspect-ratio: 1 / 1) {
+      .sumory-card .value, .sumory-card .value-ghost {
+        font-size: 3.75vmax;
+        line-height: 9vmax; } }
   .sumory-card .value-ghost {
     pointer-events: none; }
 
@@ -302,4 +311,4 @@ body.with-modal {
     text-transform: uppercase;
     color: #a5a5a5; }
 
-/*# sourceMappingURL=default-5429771f19.css.map */
+/*# sourceMappingURL=default-d9a7631bf2.css.map */

@@ -4,12 +4,15 @@
   top: 18vmin;
 
   @media (max-aspect-ratio: 15/9) {
-    top: 24vmin;
+    top: 28vmin;
   }
 }
 
 $sumory-card-size: 11vmax;
 $sumory-card-spacing: 0.8vmax;
+
+$sumory-card-size-tall: 10vmax;
+$sumory-card-spacing-tall: 0.7vmax;
 
 $sumory-card-size-wide: 20vmin;
 $sumory-card-spacing-wide: 1.2vmin;
@@ -26,6 +29,12 @@ $sumory-card-spacing-wide: 1.2vmin;
   background-color: transparent;
   border: none;
   perspective: 50vw;
+
+  @media (max-aspect-ratio: 1/1) {
+    width: $sumory-card-size-tall;
+    height: $sumory-card-size-tall;
+    margin: $sumory-card-spacing-tall;
+  }
 
   @media (min-aspect-ratio: 17/9) {
     width: $sumory-card-size-wide;
@@ -80,6 +89,11 @@ $sumory-card-spacing-wide: 1.2vmin;
     @media (min-aspect-ratio: 17/9) {
       font-size: $sumory-card-size-wide * 0.375;
       line-height: $sumory-card-size-wide * 0.9;
+    }
+
+    @media (max-aspect-ratio: 1/1) {
+      font-size: $sumory-card-size-tall * 0.375;
+      line-height: $sumory-card-size-tall * 0.9;
     }
   }
 

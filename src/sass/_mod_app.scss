@@ -15,7 +15,7 @@
 }
 
 .util-menu {
-  height: 5em;
+  height: 7em;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -36,9 +36,13 @@
   }
 }
 
+.header {
+
+}
+
 .status {
   position: absolute;
-  width: 20%;
+  width: 20vw;
   top: 3vh;
   right: 0;
 }
@@ -46,8 +50,8 @@
 .status-box {
   position: relative;
   display: inline-block;
-  width: 10em;
-  margin-left: 1em;
+  width: 9vw;
+  margin-left: 1vw;
 
   &:first-child {
     margin-left: 0;

@@ -49,15 +49,17 @@ export default function SumoryApp(props) {
 
   return (
     <div className="sumory-app">
-      <div className="instructions">{ instructions }</div>
-      <div className="status">
-        <div className="status-box status-turns">
-          <div className="label">{strings.draws}</div>
-          <div className="value">{gameStatus.turnsLeft}</div>
-        </div>
-        <div className="status-box status-sum">
-          <div className="label">{strings.sum}</div>
-          <div className="value">{gameStatus.score}</div>
+      <div className="header">
+        <div className="instructions">{ instructions }</div>
+        <div className="status">
+          <div className="status-box status-turns">
+            <div className="label">{strings.draws}</div>
+            <div className="value">{gameStatus.turnsLeft}</div>
+          </div>
+          <div className="status-box status-sum">
+            <div className="label">{strings.sum}</div>
+            <div className="value">{gameStatus.score}</div>
+          </div>
         </div>
       </div>
       <SumoryGame

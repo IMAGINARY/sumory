@@ -603,6 +603,8 @@ function SumoryApp(props) {
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-app"
   }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "header"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "instructions"
   }, instructions), /*#__PURE__*/_react["default"].createElement("div", {
     className: "status"
@@ -618,7 +620,7 @@ function SumoryApp(props) {
     className: "label"
   }, strings.sum), /*#__PURE__*/_react["default"].createElement("div", {
     className: "value"
-  }, gameStatus.score))), /*#__PURE__*/_react["default"].createElement(_sumoryGame["default"], {
+  }, gameStatus.score)))), /*#__PURE__*/_react["default"].createElement(_sumoryGame["default"], {
     key: gameNumber,
     strings: strings,
     values: cardValues,

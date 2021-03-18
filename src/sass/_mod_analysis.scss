@@ -2,12 +2,16 @@
   .sumory-analysis-text {
     font-size: 2em;
     margin-bottom: 2em;
+    text-align: center;
   }
 
   .sumory-analysis-chart {
     canvas {
       width: 100% !important;
       height: 50vh !important;
+      max-width: 1000px;
+      max-height: 400px;
+      margin: auto;
     }
   }
 }

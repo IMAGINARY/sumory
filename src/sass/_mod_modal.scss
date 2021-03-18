@@ -22,6 +22,7 @@ body.with-modal {
   border-radius: 1.5em;
   padding: 2em;
   background-color: $color-black;
+  overflow: auto;
 
   &.s-modal-with-close {
     padding-top: 4em;

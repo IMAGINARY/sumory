@@ -146,7 +146,8 @@ body.with-modal {
   border: 0.5vw solid #666;
   border-radius: 1.5em;
   padding: 2em;
-  background-color: #202020; }
+  background-color: #202020;
+  overflow: auto; }
   .s-modal.s-modal-with-close {
     padding-top: 4em; }
   .s-modal .s-modal-content {
@@ -249,11 +250,15 @@ body.with-modal {
 
 .sumory-analysis .sumory-analysis-text {
   font-size: 2em;
-  margin-bottom: 2em; }
+  margin-bottom: 2em;
+  text-align: center; }
 
 .sumory-analysis .sumory-analysis-chart canvas {
   width: 100% !important;
-  height: 50vh !important; }
+  height: 50vh !important;
+  max-width: 1000px;
+  max-height: 400px;
+  margin: auto; }
 
 .sumory-container, .sumory-app {
   width: 100%;
@@ -311,4 +316,4 @@ body.with-modal {
     text-transform: uppercase;
     color: #a5a5a5; }
 
-/*# sourceMappingURL=default-d9a7631bf2.css.map */
+/*# sourceMappingURL=default-ac8022ed75.css.map */

@@ -18,11 +18,11 @@ export default function SumoryAnalysis(props) {
         labels: Array(strategy.length).fill(0).map((_, i) => i + 1),
         datasets: [{
           data: strategy.map(value => Math.round((value + Number.EPSILON) * 100) / 100),
-          backgroundColor: '#666',
-          borderColor: '#666',
+          backgroundColor: '#fff797',
+          borderColor: '#ffec02',
           datalabels: {
             color: '#fff',
-            font: { size: 20 },
+            font: { size: 14 },
             anchor: 'end',
             align: 'top',
             clamp: true,
@@ -37,22 +37,22 @@ export default function SumoryAnalysis(props) {
         layout: { padding: { top: 40 } },
         scales: {
           xAxes: [{
-            gridLines: { color: '#fff', zeroLineColor: '#fff' },
-            ticks: { fontSize: 30, fontColor: '#fff' },
+            gridLines: { color: '#666', zeroLineColor: '#fff' },
+            ticks: { fontSize: 14, fontColor: '#fff' },
             scaleLabel: {
               labelString: 'Number of cards revealed before selecting the maximum found repeatedly',
               display: true,
-              fontSize: 30,
+              fontSize: 18,
               fontColor: '#fff',
             },
           }],
           yAxes: [{
-            gridLines: { color: '#fff', zeroLineColor: '#fff' },
-            ticks: { fontSize: 30, fontColor: '#fff' },
+            gridLines: { color: '#666', zeroLineColor: '#fff' },
+            ticks: { fontSize: 14, fontColor: '#fff' },
             scaleLabel: {
               labelString: 'Average sum',
               display: true,
-              fontSize: 30,
+              fontSize: 18,
               fontColor: '#fff',
             },
           }],

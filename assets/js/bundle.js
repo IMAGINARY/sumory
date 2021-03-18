@@ -150,7 +150,7 @@ var _aux = require("./aux");
 
 function generateValues(count) {
   var answer = [];
-  var range = Math.floor(Math.random() * 99);
+  var range = Math.floor(Math.random() * 89) + 10;
 
   for (var i = 0; i < count; i += 1) {
     answer.push(Math.floor(Math.random() * range * 2) - Math.floor(Math.random() * range * 2));

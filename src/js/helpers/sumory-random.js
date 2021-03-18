@@ -3,7 +3,7 @@ import { shuffle } from './aux';
 export function generateValues(count) {
   const answer = [];
 
-  const range = Math.floor((Math.random() * 99));
+  const range = Math.floor((Math.random() * 89)) + 10;
   for (let i = 0; i < count; i += 1) {
     answer.push(Math.floor((Math.random() * range * 2)) - Math.floor((Math.random() * range * 2)));
   }

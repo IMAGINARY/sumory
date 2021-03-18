@@ -69,8 +69,8 @@ export default function SumoryAnalysis(props) {
         <br />
         <span dangerouslySetInnerHTML={{
           __html: userSum > best
-            ? `${strings['better-0']} ${(userSum - best).toFixed(1)} ${strings['better-1']}`
-            : `${strings['worse-0']} ${(best - userSum).toFixed(1)} ${strings['worse-1']}`,
+            ? `${strings['better-0']} ${((userSum / best) * 100 - 100).toFixed(1)}% ${strings['better-1']}`
+            : `${strings['worse-0']} ${((userSum / best) * -100 + 100).toFixed(1)}% ${strings['worse-1']}`,
         }}
         />
       </div>

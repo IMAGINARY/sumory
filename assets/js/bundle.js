@@ -462,7 +462,7 @@ function SumoryAnalysis(props) {
     className: "sumory-analysis-text"
   }, /*#__PURE__*/_react["default"].createElement("span", null, "".concat(strings['final-result'], " ").concat(userSum)), /*#__PURE__*/_react["default"].createElement("br", null), /*#__PURE__*/_react["default"].createElement("span", {
     dangerouslySetInnerHTML: {
-      __html: userSum > best ? "".concat(strings['better-0'], " ").concat((userSum - best).toFixed(1), " ").concat(strings['better-1']) : "".concat(strings['worse-0'], " ").concat((best - userSum).toFixed(1), " ").concat(strings['worse-1'])
+      __html: userSum > best ? "".concat(strings['better-0'], " ").concat((userSum / best * 100 - 100).toFixed(1), "% ").concat(strings['better-1']) : "".concat(strings['worse-0'], " ").concat((userSum / best * -100 + 100).toFixed(1), "% ").concat(strings['worse-1'])
     }
   })), /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-analysis-chart"

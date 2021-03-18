@@ -1,0 +1,12 @@
+{
+  "name": "profile-montecarlo",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "profile": "node -r esm ./main.js"
+  },
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}

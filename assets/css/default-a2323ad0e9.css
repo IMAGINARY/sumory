@@ -142,6 +142,7 @@ body.with-modal {
   height: 100%; }
 
 .s-modal {
+  position: relative;
   width: 80%;
   padding: 2em;
   margin: 6em auto;
@@ -204,7 +205,7 @@ body.with-modal {
   .sumory-card .sumory-card-front {
     border-color: #fff797;
     background-color: #b3b1a0;
-    transform: rotateY(180deg); }
+    transform: rotateY(-180deg); }
   .sumory-card .sumory-card-back {
     background-color: #444;
     border: 0.5vw solid #444;
@@ -314,4 +315,4 @@ body.with-modal {
     text-transform: uppercase;
     color: #a5a5a5; }
 
-/*# sourceMappingURL=default-ed17ec045a.css.map */
+/*# sourceMappingURL=default-a2323ad0e9.css.map */

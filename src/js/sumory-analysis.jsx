@@ -76,7 +76,7 @@ export default function SumoryAnalysis(props) {
       </div>
       <div className="sumory-analysis-explanation">
         <p>
-          To win at this game it&apos;s very likely you adopted a strategy with two phases:
+          To win at this game, it&apos;s very likely you adopted a strategy with two phases:
         </p>
         <p>
           <strong>Explore: </strong>
@@ -88,7 +88,7 @@ export default function SumoryAnalysis(props) {
         </p>
         <p>
           Many AI systems learn to perform tasks by using strategies with these two phases.
-          They alternate between taking the best known course of action while at the same
+          They alternate between taking the best-known course of action while at the same
           time exploring new options that could bring better results.
         </p>
       </div>

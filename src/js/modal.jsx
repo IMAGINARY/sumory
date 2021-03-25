@@ -17,7 +17,7 @@ export default function Modal(props) {
   };
 
   return (
-    <Fragment>
+    <div className="s-modal-with-overlay">
       <div className="overlay" />
       <div className="s-modal-scroll">
         <div className={classnames('s-modal', { 's-modal-with-close': showCloseButton })}>
@@ -31,7 +31,7 @@ export default function Modal(props) {
           </div>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 }
 

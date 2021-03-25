@@ -8,7 +8,9 @@
   "engines": {
     "node": ">=10.14.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-transition-group": "^4.4.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",

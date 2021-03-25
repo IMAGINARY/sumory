@@ -2,6 +2,21 @@ body.with-modal {
   overflow: hidden;
 }
 
+.s-modal-with-overlay {
+  width: 100%;
+  height: 100%;
+  display: none;
+
+  &.enter, &.enter-active, &.enter-done,
+  &.exit, &.exit-active {
+    display: block;
+  }
+
+  &.exit-done {
+    display: none;
+  }
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -40,5 +55,42 @@ body.with-modal {
     border: none;
     color: $color-white;
     font-size: 2em;
+  }
+}
+
+
+.s-modal-with-overlay {
+  .overlay {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .s-modal {
+    opacity: 0;
+    margin-top: -500px;
+    transition: opacity 0.5s, margin-top 0.5s;
+  }
+
+  &.enter-active, &.enter-done, &.exit {
+    .overlay {
+      opacity: 1;
+      transition: opacity 0.3s 0.2s, margin-top 0.3s;
+    }
+
+    .s-modal {
+      margin-top: 6em;
+      opacity: 1;
+    }
+  }
+
+  &.exit-active, &.exit-done {
+    .overlay {
+      opacity: 0;
+    }
+
+    .s-modal {
+      margin-top: -500px;
+      opacity: 0;
+    }
   }
 }

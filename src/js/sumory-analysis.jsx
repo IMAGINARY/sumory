@@ -60,7 +60,7 @@ export default function SumoryAnalysis(props) {
         legend: { display: false },
       },
     });
-  });
+  }, []);
 
   return (
     <div className="sumory-analysis">

@@ -122,6 +122,15 @@ button:focus {
 body.with-modal {
   overflow: hidden; }
 
+.s-modal-with-overlay {
+  width: 100%;
+  height: 100%;
+  display: none; }
+  .s-modal-with-overlay.enter, .s-modal-with-overlay.enter-active, .s-modal-with-overlay.enter-done, .s-modal-with-overlay.exit, .s-modal-with-overlay.exit-active {
+    display: block; }
+  .s-modal-with-overlay.exit-done {
+    display: none; }
+
 .overlay {
   position: fixed;
   top: 0;
@@ -155,6 +164,30 @@ body.with-modal {
     border: none;
     color: #fff;
     font-size: 2em; }
+
+.s-modal-with-overlay .overlay {
+  opacity: 0;
+  transition: opacity 0.5s; }
+
+.s-modal-with-overlay .s-modal {
+  opacity: 0;
+  margin-top: -500px;
+  transition: opacity 0.5s, margin-top 0.5s; }
+
+.s-modal-with-overlay.enter-active .overlay, .s-modal-with-overlay.enter-done .overlay, .s-modal-with-overlay.exit .overlay {
+  opacity: 1;
+  transition: opacity 0.3s 0.2s, margin-top 0.3s; }
+
+.s-modal-with-overlay.enter-active .s-modal, .s-modal-with-overlay.enter-done .s-modal, .s-modal-with-overlay.exit .s-modal {
+  margin-top: 6em;
+  opacity: 1; }
+
+.s-modal-with-overlay.exit-active .overlay, .s-modal-with-overlay.exit-done .overlay {
+  opacity: 0; }
+
+.s-modal-with-overlay.exit-active .s-modal, .s-modal-with-overlay.exit-done .s-modal {
+  margin-top: -500px;
+  opacity: 0; }
 
 .sumory-board {
   text-align: center;
@@ -318,4 +351,4 @@ body.with-modal {
     text-transform: uppercase;
     color: #a5a5a5; }
 
-/*# sourceMappingURL=default-5205425b9a.css.map */
+/*# sourceMappingURL=default-cf93899b61.css.map */

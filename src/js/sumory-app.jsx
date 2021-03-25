@@ -1,6 +1,7 @@
 /* globals IMAGINARY */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 import Dropdown from './dropdown';
 import Modal from './modal';
 import SumoryGame from './sumory-game';
@@ -10,6 +11,7 @@ import SumoryAnalysis from './sumory-analysis';
 export default function SumoryApp(props) {
   const CARD_COUNT = 21;
   const TURNS = 10;
+  const ANIMATION_TIMEOUT = 500;
   const { config } = props;
   const [language, setLanguage] = useState(config.defaultLanguage || 'en');
   const [strings, setStrings] = useState({});
@@ -41,7 +43,6 @@ export default function SumoryApp(props) {
   }
 
   function restart() {
-    setAnalysisVisible(false);
     setGameNumber(gameNumber + 1);
     setGameStatus({ score: 0, turnsLeft: TURNS });
     setCardValues(generateValues(CARD_COUNT));
@@ -95,26 +96,29 @@ export default function SumoryApp(props) {
           }
         </div>
       </div>
-      {
-        analysisVisible
-        && (
-          <Modal showCloseButton={false}>
-            <SumoryAnalysis
-              config={config}
-              strings={strings}
-              values={cardValues}
-              turns={TURNS}
-              userSum={gameStatus.score}
-            />
-            <div className="text-center mt-5">
-              <button type="button" className="s-btn" onClick={() => { restart(); }}>
-                <span className="fas fa-redo-alt fa-lg mr-2" />
-                {strings.play_again}
-              </button>
-            </div>
-          </Modal>
-        )
-      }
+      <CSSTransition
+        in={analysisVisible}
+        timeout={ANIMATION_TIMEOUT}
+        mountOnEnter
+        unmountOnExit
+        onExited={() => { restart(); }}
+      >
+        <Modal showCloseButton={false}>
+          <SumoryAnalysis
+            config={config}
+            strings={strings}
+            values={cardValues}
+            turns={TURNS}
+            userSum={gameStatus.score}
+          />
+          <div className="text-center mt-5">
+            <button type="button" className="s-btn" onClick={() => { setAnalysisVisible(false); }}>
+              <span className="fas fa-redo-alt fa-lg mr-2" />
+              {strings.play_again}
+            </button>
+          </div>
+        </Modal>
+      </CSSTransition>
     </div>
   );
 }

@@ -11,25 +11,22 @@ body.with-modal {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.s-modal-scroll {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
 .s-modal {
-  position: fixed;
   width: 80%;
-  max-height: 80%;
-  top: 10%;
-  left: 10%;
-  right: 10%;
+  padding: 2em;
+  margin: 6em auto;
   border: 0.5vw solid #666;
   border-radius: 1.5em;
-  padding: 2em;
   background-color: $color-black;
-  overflow: auto;
 
   &.s-modal-with-close {
     padding-top: 4em;
-  }
-
-  .s-modal-content {
-    overflow: auto;
   }
 
   .s-modal-close {

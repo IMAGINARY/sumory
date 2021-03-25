@@ -309,6 +309,8 @@ function Modal(props) {
   return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "overlay"
   }), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "s-modal-scroll"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _classnames["default"])('s-modal', {
       's-modal-with-close': showCloseButton
     })
@@ -320,7 +322,7 @@ function Modal(props) {
     className: "fas fa-times"
   })), /*#__PURE__*/_react["default"].createElement("div", {
     className: "s-modal-content"
-  }, children)));
+  }, children))));
 }
 
 Modal.propTypes = {

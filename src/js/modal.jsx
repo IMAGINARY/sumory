@@ -19,14 +19,16 @@ export default function Modal(props) {
   return (
     <Fragment>
       <div className="overlay" />
-      <div className={classnames('s-modal', { 's-modal-with-close': showCloseButton })}>
-        { showCloseButton && (
-          <button type="button" className="s-modal-close" onClick={handleClick}>
-            <span className="fas fa-times" />
-          </button>
-        )}
-        <div className="s-modal-content">
-          { children }
+      <div className="s-modal-scroll">
+        <div className={classnames('s-modal', { 's-modal-with-close': showCloseButton })}>
+          { showCloseButton && (
+            <button type="button" className="s-modal-close" onClick={handleClick}>
+              <span className="fas fa-times" />
+            </button>
+          )}
+          <div className="s-modal-content">
+            { children }
+          </div>
         </div>
       </div>
     </Fragment>

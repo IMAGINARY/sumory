@@ -1227,7 +1227,6 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],17:[function(require,module,exports){
-(function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1239,7 +1238,7 @@ process.umask = function() { return 0; };
 
 var printWarning = function() {};
 
-if (process.env.NODE_ENV !== 'production') {
+if ("production" !== 'production') {
   var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
@@ -1270,7 +1269,7 @@ if (process.env.NODE_ENV !== 'production') {
  * @private
  */
 function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
-  if (process.env.NODE_ENV !== 'production') {
+  if ("production" !== 'production') {
     for (var typeSpecName in typeSpecs) {
       if (has(typeSpecs, typeSpecName)) {
         var error;
@@ -1324,16 +1323,14 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
  * @private
  */
 checkPropTypes.resetWarningCache = function() {
-  if (process.env.NODE_ENV !== 'production') {
+  if ("production" !== 'production') {
     loggedTypeFailures = {};
   }
 }
 
 module.exports = checkPropTypes;
 
-}).call(this,require('_process'))
-
-},{"./lib/ReactPropTypesSecret":21,"_process":16}],18:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":21}],18:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1400,7 +1397,6 @@ module.exports = function() {
 };
 
 },{"./lib/ReactPropTypesSecret":21}],19:[function(require,module,exports){
-(function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1419,7 +1415,7 @@ var checkPropTypes = require('./checkPropTypes');
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function() {};
 
-if (process.env.NODE_ENV !== 'production') {
+if ("production" !== 'production') {
   printWarning = function(text) {
     var message = 'Warning: ' + text;
     if (typeof console !== 'undefined') {
@@ -1570,7 +1566,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   PropTypeError.prototype = Error.prototype;
 
   function createChainableTypeChecker(validate) {
-    if (process.env.NODE_ENV !== 'production') {
+    if ("production" !== 'production') {
       var manualPropTypeCallCache = {};
       var manualPropTypeWarningCount = 0;
     }
@@ -1588,7 +1584,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
           );
           err.name = 'Invariant Violation';
           throw err;
-        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+        } else if ("production" !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (
@@ -1707,7 +1703,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      if (process.env.NODE_ENV !== 'production') {
+      if ("production" !== 'production') {
         if (arguments.length > 1) {
           printWarning(
             'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
@@ -1765,7 +1761,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      "production" !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunctionThatReturnsNull;
     }
 
@@ -1993,10 +1989,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-}).call(this,require('_process'))
-
-},{"./checkPropTypes":17,"./lib/ReactPropTypesSecret":21,"_process":16,"object-assign":15,"react-is":27}],20:[function(require,module,exports){
-(function (process){
+},{"./checkPropTypes":17,"./lib/ReactPropTypesSecret":21,"object-assign":15,"react-is":27}],20:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2004,7 +1997,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
  * LICENSE file in the root directory of this source tree.
  */
 
-if (process.env.NODE_ENV !== 'production') {
+if ("production" !== 'production') {
   var ReactIs = require('react-is');
 
   // By explicitly using `prop-types` you are opting into new development behavior.
@@ -2017,9 +2010,7 @@ if (process.env.NODE_ENV !== 'production') {
   module.exports = require('./factoryWithThrowingShims')();
 }
 
-}).call(this,require('_process'))
-
-},{"./factoryWithThrowingShims":18,"./factoryWithTypeCheckers":19,"_process":16,"react-is":27}],21:[function(require,module,exports){
+},{"./factoryWithThrowingShims":18,"./factoryWithTypeCheckers":19,"react-is":27}],21:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2034,7 +2025,6 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 },{}],22:[function(require,module,exports){
-(function (process){
 /** @license React v16.13.1
  * react-dom.development.js
  *
@@ -2048,7 +2038,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-if (process.env.NODE_ENV !== "production") {
+if ("production" !== "production") {
   (function() {
 'use strict';
 
@@ -27048,9 +27038,7 @@ exports.version = ReactVersion;
   })();
 }
 
-}).call(this,require('_process'))
-
-},{"_process":16,"object-assign":15,"prop-types/checkPropTypes":17,"react":40,"scheduler":45,"scheduler/tracing":46}],23:[function(require,module,exports){
+},{"object-assign":15,"prop-types/checkPropTypes":17,"react":40,"scheduler":45,"scheduler/tracing":46}],23:[function(require,module,exports){
 /** @license React v16.13.1
  * react-dom.production.min.js
  *
@@ -27345,7 +27333,6 @@ exports.unmountComponentAtNode=function(a){if(!gk(a))throw Error(u(40));return a
 exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!gk(c))throw Error(u(200));if(null==a||void 0===a._reactInternalFiber)throw Error(u(38));return ik(a,b,c,!1,d)};exports.version="16.13.1";
 
 },{"object-assign":15,"react":40,"scheduler":45}],24:[function(require,module,exports){
-(function (process){
 'use strict';
 
 function checkDCE() {
@@ -27356,7 +27343,7 @@ function checkDCE() {
   ) {
     return;
   }
-  if (process.env.NODE_ENV !== 'production') {
+  if ("production" !== 'production') {
     // This branch is unreachable because this function is only called
     // in production, but the condition is true only in development.
     // Therefore if the branch is still here, dead code elimination wasn't
@@ -27376,7 +27363,7 @@ function checkDCE() {
   }
 }
 
-if (process.env.NODE_ENV === 'production') {
+if ("production" === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
@@ -27385,9 +27372,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = require('./cjs/react-dom.development.js');
 }
 
-}).call(this,require('_process'))
-
-},{"./cjs/react-dom.development.js":22,"./cjs/react-dom.production.min.js":23,"_process":16}],25:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":22,"./cjs/react-dom.production.min.js":23}],25:[function(require,module,exports){
 (function (process){
 /** @license React v16.13.1
  * react-is.development.js
@@ -27603,7 +27588,6 @@ if (process.env.NODE_ENV === 'production') {
 }).call(this,require('_process'))
 
 },{"./cjs/react-is.development.js":25,"./cjs/react-is.production.min.js":26,"_process":16}],28:[function(require,module,exports){
-(function (process){
 "use strict";
 
 exports.__esModule = true;
@@ -27900,7 +27884,7 @@ var CSSTransition = /*#__PURE__*/function (_React$Component) {
 CSSTransition.defaultProps = {
   classNames: ''
 };
-CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, _Transition.default.propTypes, {
+CSSTransition.propTypes = "production" !== "production" ? _extends({}, _Transition.default.propTypes, {
   /**
    * The animation classNames applied to the component as it appears, enters,
    * exits or has finished the transition. A single name can be provided, which
@@ -28033,10 +28017,7 @@ CSSTransition.propTypes = process.env.NODE_ENV !== "production" ? _extends({}, _
 var _default = CSSTransition;
 exports.default = _default;
 module.exports = exports.default;
-}).call(this,require('_process'))
-
-},{"./Transition":31,"./utils/PropTypes":37,"_process":16,"dom-helpers/addClass":12,"dom-helpers/removeClass":14,"prop-types":20,"react":40}],29:[function(require,module,exports){
-(function (process){
+},{"./Transition":31,"./utils/PropTypes":37,"dom-helpers/addClass":12,"dom-helpers/removeClass":14,"prop-types":20,"react":40}],29:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -28179,7 +28160,7 @@ var ReplaceTransition = /*#__PURE__*/function (_React$Component) {
   return ReplaceTransition;
 }(_react.default.Component);
 
-ReplaceTransition.propTypes = process.env.NODE_ENV !== "production" ? {
+ReplaceTransition.propTypes = "production" !== "production" ? {
   in: _propTypes.default.bool.isRequired,
   children: function children(props, propName) {
     if (_react.default.Children.count(props[propName]) !== 2) return new Error("\"" + propName + "\" must be exactly two transition components.");
@@ -28189,10 +28170,7 @@ ReplaceTransition.propTypes = process.env.NODE_ENV !== "production" ? {
 var _default = ReplaceTransition;
 exports.default = _default;
 module.exports = exports.default;
-}).call(this,require('_process'))
-
-},{"./TransitionGroup":32,"_process":16,"prop-types":20,"react":40,"react-dom":24}],30:[function(require,module,exports){
-(function (process){
+},{"./TransitionGroup":32,"prop-types":20,"react":40,"react-dom":24}],30:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -28442,7 +28420,7 @@ var SwitchTransition = /*#__PURE__*/function (_React$Component) {
   return SwitchTransition;
 }(_react.default.Component);
 
-SwitchTransition.propTypes = process.env.NODE_ENV !== "production" ? {
+SwitchTransition.propTypes = "production" !== "production" ? {
   /**
    * Transition modes.
    * `out-in`: Current element transitions out first, then when complete, the new element transitions in.
@@ -28462,10 +28440,7 @@ SwitchTransition.defaultProps = {
 };
 var _default = SwitchTransition;
 exports.default = _default;
-}).call(this,require('_process'))
-
-},{"./Transition":31,"./TransitionGroupContext":33,"_process":16,"prop-types":20,"react":40}],31:[function(require,module,exports){
-(function (process){
+},{"./Transition":31,"./TransitionGroupContext":33,"prop-types":20,"react":40}],31:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -28893,7 +28868,7 @@ var Transition = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 Transition.contextType = _TransitionGroupContext.default;
-Transition.propTypes = process.env.NODE_ENV !== "production" ? {
+Transition.propTypes = "production" !== "production" ? {
   /**
    * A React reference to DOM element that need to transition:
    * https://stackoverflow.com/a/51127130/4671932
@@ -29101,10 +29076,7 @@ Transition.ENTERED = ENTERED;
 Transition.EXITING = EXITING;
 var _default = Transition;
 exports.default = _default;
-}).call(this,require('_process'))
-
-},{"./TransitionGroupContext":33,"./config":34,"./utils/PropTypes":37,"_process":16,"prop-types":20,"react":40,"react-dom":24}],32:[function(require,module,exports){
-(function (process){
+},{"./TransitionGroupContext":33,"./config":34,"./utils/PropTypes":37,"prop-types":20,"react":40,"react-dom":24}],32:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -29248,7 +29220,7 @@ var TransitionGroup = /*#__PURE__*/function (_React$Component) {
   return TransitionGroup;
 }(_react.default.Component);
 
-TransitionGroup.propTypes = process.env.NODE_ENV !== "production" ? {
+TransitionGroup.propTypes = "production" !== "production" ? {
   /**
    * `<TransitionGroup>` renders a `<div>` by default. You can change this
    * behavior by providing a `component` prop.
@@ -29310,9 +29282,7 @@ TransitionGroup.defaultProps = defaultProps;
 var _default = TransitionGroup;
 exports.default = _default;
 module.exports = exports.default;
-}).call(this,require('_process'))
-
-},{"./TransitionGroupContext":33,"./utils/ChildMapping":36,"_process":16,"prop-types":20,"react":40}],33:[function(require,module,exports){
+},{"./TransitionGroupContext":33,"./utils/ChildMapping":36,"prop-types":20,"react":40}],33:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -29519,7 +29489,6 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
   return children;
 }
 },{"react":40}],37:[function(require,module,exports){
-(function (process){
 "use strict";
 
 exports.__esModule = true;
@@ -29529,13 +29498,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var timeoutsShape = process.env.NODE_ENV !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
+var timeoutsShape = "production" !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.shape({
   enter: _propTypes.default.number,
   exit: _propTypes.default.number,
   appear: _propTypes.default.number
 }).isRequired]) : null;
 exports.timeoutsShape = timeoutsShape;
-var classNamesShape = process.env.NODE_ENV !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.shape({
+var classNamesShape = "production" !== 'production' ? _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.shape({
   enter: _propTypes.default.string,
   exit: _propTypes.default.string,
   active: _propTypes.default.string
@@ -29548,10 +29517,7 @@ var classNamesShape = process.env.NODE_ENV !== 'production' ? _propTypes.default
   exitActive: _propTypes.default.string
 })]) : null;
 exports.classNamesShape = classNamesShape;
-}).call(this,require('_process'))
-
-},{"_process":16,"prop-types":20}],38:[function(require,module,exports){
-(function (process){
+},{"prop-types":20}],38:[function(require,module,exports){
 /** @license React v16.13.1
  * react.development.js
  *
@@ -29565,7 +29531,7 @@ exports.classNamesShape = classNamesShape;
 
 
 
-if (process.env.NODE_ENV !== "production") {
+if ("production" !== "production") {
   (function() {
 'use strict';
 
@@ -31465,9 +31431,7 @@ exports.version = ReactVersion;
   })();
 }
 
-}).call(this,require('_process'))
-
-},{"_process":16,"object-assign":15,"prop-types/checkPropTypes":17}],39:[function(require,module,exports){
+},{"object-assign":15,"prop-types/checkPropTypes":17}],39:[function(require,module,exports){
 /** @license React v16.13.1
  * react.production.min.js
  *
@@ -31495,19 +31459,15 @@ exports.lazy=function(a){return{$$typeof:A,_ctor:a,_status:-1,_result:null}};exp
 exports.useLayoutEffect=function(a,b){return Z().useLayoutEffect(a,b)};exports.useMemo=function(a,b){return Z().useMemo(a,b)};exports.useReducer=function(a,b,c){return Z().useReducer(a,b,c)};exports.useRef=function(a){return Z().useRef(a)};exports.useState=function(a){return Z().useState(a)};exports.version="16.13.1";
 
 },{"object-assign":15}],40:[function(require,module,exports){
-(function (process){
 'use strict';
 
-if (process.env.NODE_ENV === 'production') {
+if ("production" === 'production') {
   module.exports = require('./cjs/react.production.min.js');
 } else {
   module.exports = require('./cjs/react.development.js');
 }
 
-}).call(this,require('_process'))
-
-},{"./cjs/react.development.js":38,"./cjs/react.production.min.js":39,"_process":16}],41:[function(require,module,exports){
-(function (process){
+},{"./cjs/react.development.js":38,"./cjs/react.production.min.js":39}],41:[function(require,module,exports){
 /** @license React v0.19.1
  * scheduler-tracing.development.js
  *
@@ -31521,7 +31481,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
-if (process.env.NODE_ENV !== "production") {
+if ("production" !== "production") {
   (function() {
 'use strict';
 
@@ -31858,9 +31818,7 @@ exports.unstable_wrap = unstable_wrap;
   })();
 }
 
-}).call(this,require('_process'))
-
-},{"_process":16}],42:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 /** @license React v0.19.1
  * scheduler-tracing.production.min.js
  *
@@ -31873,7 +31831,6 @@ exports.unstable_wrap = unstable_wrap;
 'use strict';var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_subscribe=function(){};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_unsubscribe=function(){};exports.unstable_wrap=function(a){return a};
 
 },{}],43:[function(require,module,exports){
-(function (process){
 /** @license React v0.19.1
  * scheduler.development.js
  *
@@ -31887,7 +31844,7 @@ exports.unstable_wrap = unstable_wrap;
 
 
 
-if (process.env.NODE_ENV !== "production") {
+if ("production" !== "production") {
   (function() {
 'use strict';
 
@@ -32733,9 +32690,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
   })();
 }
 
-}).call(this,require('_process'))
-
-},{"_process":16}],44:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 /** @license React v0.19.1
  * scheduler.production.min.js
  *
@@ -32759,28 +32714,22 @@ exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();i
 exports.unstable_shouldYield=function(){var a=exports.unstable_now();V(a);var b=L(N);return b!==Q&&null!==Q&&null!==b&&null!==b.callback&&b.startTime<=a&&b.expirationTime<Q.expirationTime||k()};exports.unstable_wrapCallback=function(a){var b=R;return function(){var c=R;R=b;try{return a.apply(this,arguments)}finally{R=c}}};
 
 },{}],45:[function(require,module,exports){
-(function (process){
 'use strict';
 
-if (process.env.NODE_ENV === 'production') {
+if ("production" === 'production') {
   module.exports = require('./cjs/scheduler.production.min.js');
 } else {
   module.exports = require('./cjs/scheduler.development.js');
 }
 
-}).call(this,require('_process'))
-
-},{"./cjs/scheduler.development.js":43,"./cjs/scheduler.production.min.js":44,"_process":16}],46:[function(require,module,exports){
-(function (process){
+},{"./cjs/scheduler.development.js":43,"./cjs/scheduler.production.min.js":44}],46:[function(require,module,exports){
 'use strict';
 
-if (process.env.NODE_ENV === 'production') {
+if ("production" === 'production') {
   module.exports = require('./cjs/scheduler-tracing.production.min.js');
 } else {
   module.exports = require('./cjs/scheduler-tracing.development.js');
 }
 
-}).call(this,require('_process'))
-
-},{"./cjs/scheduler-tracing.development.js":41,"./cjs/scheduler-tracing.production.min.js":42,"_process":16}]},{},[5])
+},{"./cjs/scheduler-tracing.development.js":41,"./cjs/scheduler-tracing.production.min.js":42}]},{},[5])
 

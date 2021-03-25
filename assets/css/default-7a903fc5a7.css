@@ -172,22 +172,24 @@ body.with-modal {
 .s-modal-with-overlay .s-modal {
   opacity: 0;
   margin-top: -500px;
-  transition: opacity 0.5s, margin-top 0.5s; }
+  transition: opacity 0.5s, margin-top 0.3s; }
 
 .s-modal-with-overlay.enter-active .overlay, .s-modal-with-overlay.enter-done .overlay, .s-modal-with-overlay.exit .overlay {
   opacity: 1;
-  transition: opacity 0.3s 0.2s, margin-top 0.3s; }
+  transition: opacity 0.5s; }
 
 .s-modal-with-overlay.enter-active .s-modal, .s-modal-with-overlay.enter-done .s-modal, .s-modal-with-overlay.exit .s-modal {
   margin-top: 6em;
-  opacity: 1; }
+  opacity: 1;
+  transition: opacity 0.3s, margin-top 0.5s; }
 
 .s-modal-with-overlay.exit-active .overlay, .s-modal-with-overlay.exit-done .overlay {
   opacity: 0; }
 
 .s-modal-with-overlay.exit-active .s-modal, .s-modal-with-overlay.exit-done .s-modal {
   margin-top: -500px;
-  opacity: 0; }
+  opacity: 0;
+  transition: opacity 0.3s linear 0.2s, margin-top 0.3s; }
 
 .sumory-board {
   text-align: center;
@@ -351,4 +353,4 @@ body.with-modal {
     text-transform: uppercase;
     color: #a5a5a5; }
 
-/*# sourceMappingURL=default-cf93899b61.css.map */
+/*# sourceMappingURL=default-7a903fc5a7.css.map */

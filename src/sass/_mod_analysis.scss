@@ -1,8 +1,20 @@
 .sumory-analysis {
   .sumory-analysis-text {
-    font-size: 2em;
-    margin-bottom: 2em;
+    font-size: 1.4rem;
+    margin-bottom: 1.4rem;
     text-align: center;
+  }
+
+  .sumory-analysis-explanation {
+    font-size: 1rem;
+    width: 60%;
+    padding: 1em 1em 0.3em;
+    border: 3px solid $color-yellow-light;
+    margin: 0 20%;
+
+    strong {
+      color: $color-yellow-light;
+    }
   }
 
   .sumory-analysis-chart {

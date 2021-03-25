@@ -429,7 +429,7 @@ function SumoryAnalysis(props) {
               fontColor: '#fff'
             },
             scaleLabel: {
-              labelString: 'Number of cards revealed before selecting the maximum found repeatedly',
+              labelString: 'Number of turns of exploration',
               display: true,
               fontSize: 18,
               fontColor: '#fff'
@@ -467,6 +467,8 @@ function SumoryAnalysis(props) {
       __html: userSum > best ? "".concat(strings['better-0'], " ").concat((userSum / best * 100 - 100).toFixed(1), "% ").concat(strings['better-1']) : "".concat(strings['worse-0'], " ").concat((userSum / best * -100 + 100).toFixed(1), "% ").concat(strings['worse-1'])
     }
   })), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "sumory-analysis-explanation"
+  }, /*#__PURE__*/_react["default"].createElement("p", null, "To win at this game it's very likely you adopted a strategy with two phases:"), /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement("strong", null, "Explore: "), "Flip cards trying to find a high value."), /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement("strong", null, "Exploit: "), "Repeatedly pick the highest value found to maximize the score."), /*#__PURE__*/_react["default"].createElement("p", null, "Many AI systems learn to perform tasks by using strategies with these two phases. They alternate between taking the best known course of action while at the same time exploring new options that could bring better results.")), /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-analysis-chart"
   }, /*#__PURE__*/_react["default"].createElement("canvas", {
     width: "400",

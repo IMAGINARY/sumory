@@ -107,6 +107,7 @@ function es(entrypoint, outputName) {
 }
 
 function dependencies() {
+  process.env.NODE_ENV = 'production';
   safeClean(paths.dependencies.clean);
   return es(paths.dependencies.src, paths.dependencies.filename);
 }
@@ -114,6 +115,11 @@ function dependencies() {
 function scripts() {
   safeClean(paths.scripts.clean);
   return es(paths.scripts.src, paths.scripts.filename);
+}
+
+function scriptsProd() {
+  process.env.NODE_ENV = 'production';
+  return scripts();
 }
 
 function watch() {
@@ -129,6 +135,7 @@ exports.html = html;
 exports.styles = styles;
 exports.dependencies = dependencies;
 exports.scripts = scripts;
+exports.scriptsProd = scriptsProd;
 exports.watch = watch;
 
 exports.build = build;

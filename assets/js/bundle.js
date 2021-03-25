@@ -1157,7 +1157,6 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],13:[function(require,module,exports){
-(function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1169,7 +1168,7 @@ process.umask = function() { return 0; };
 
 var printWarning = function() {};
 
-if (process.env.NODE_ENV !== 'production') {
+if ("production" !== 'production') {
   var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
@@ -1200,7 +1199,7 @@ if (process.env.NODE_ENV !== 'production') {
  * @private
  */
 function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
-  if (process.env.NODE_ENV !== 'production') {
+  if ("production" !== 'production') {
     for (var typeSpecName in typeSpecs) {
       if (has(typeSpecs, typeSpecName)) {
         var error;
@@ -1254,16 +1253,14 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
  * @private
  */
 checkPropTypes.resetWarningCache = function() {
-  if (process.env.NODE_ENV !== 'production') {
+  if ("production" !== 'production') {
     loggedTypeFailures = {};
   }
 }
 
 module.exports = checkPropTypes;
 
-}).call(this,require('_process'))
-
-},{"./lib/ReactPropTypesSecret":17,"_process":12}],14:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":17}],14:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1330,7 +1327,6 @@ module.exports = function() {
 };
 
 },{"./lib/ReactPropTypesSecret":17}],15:[function(require,module,exports){
-(function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1349,7 +1345,7 @@ var checkPropTypes = require('./checkPropTypes');
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function() {};
 
-if (process.env.NODE_ENV !== 'production') {
+if ("production" !== 'production') {
   printWarning = function(text) {
     var message = 'Warning: ' + text;
     if (typeof console !== 'undefined') {
@@ -1500,7 +1496,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   PropTypeError.prototype = Error.prototype;
 
   function createChainableTypeChecker(validate) {
-    if (process.env.NODE_ENV !== 'production') {
+    if ("production" !== 'production') {
       var manualPropTypeCallCache = {};
       var manualPropTypeWarningCount = 0;
     }
@@ -1518,7 +1514,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
           );
           err.name = 'Invariant Violation';
           throw err;
-        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+        } else if ("production" !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (
@@ -1637,7 +1633,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-      if (process.env.NODE_ENV !== 'production') {
+      if ("production" !== 'production') {
         if (arguments.length > 1) {
           printWarning(
             'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
@@ -1695,7 +1691,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-      process.env.NODE_ENV !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      "production" !== 'production' ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
       return emptyFunctionThatReturnsNull;
     }
 
@@ -1923,10 +1919,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-}).call(this,require('_process'))
-
-},{"./checkPropTypes":13,"./lib/ReactPropTypesSecret":17,"_process":12,"object-assign":11,"react-is":23}],16:[function(require,module,exports){
-(function (process){
+},{"./checkPropTypes":13,"./lib/ReactPropTypesSecret":17,"object-assign":11,"react-is":23}],16:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1934,7 +1927,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
  * LICENSE file in the root directory of this source tree.
  */
 
-if (process.env.NODE_ENV !== 'production') {
+if ("production" !== 'production') {
   var ReactIs = require('react-is');
 
   // By explicitly using `prop-types` you are opting into new development behavior.
@@ -1947,9 +1940,7 @@ if (process.env.NODE_ENV !== 'production') {
   module.exports = require('./factoryWithThrowingShims')();
 }
 
-}).call(this,require('_process'))
-
-},{"./factoryWithThrowingShims":14,"./factoryWithTypeCheckers":15,"_process":12,"react-is":23}],17:[function(require,module,exports){
+},{"./factoryWithThrowingShims":14,"./factoryWithTypeCheckers":15,"react-is":23}],17:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1964,7 +1955,6 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 },{}],18:[function(require,module,exports){
-(function (process){
 /** @license React v16.13.1
  * react-dom.development.js
  *
@@ -1978,7 +1968,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-if (process.env.NODE_ENV !== "production") {
+if ("production" !== "production") {
   (function() {
 'use strict';
 
@@ -26978,9 +26968,7 @@ exports.version = ReactVersion;
   })();
 }
 
-}).call(this,require('_process'))
-
-},{"_process":12,"object-assign":11,"prop-types/checkPropTypes":13,"react":26,"scheduler":31,"scheduler/tracing":32}],19:[function(require,module,exports){
+},{"object-assign":11,"prop-types/checkPropTypes":13,"react":26,"scheduler":31,"scheduler/tracing":32}],19:[function(require,module,exports){
 /** @license React v16.13.1
  * react-dom.production.min.js
  *
@@ -27275,7 +27263,6 @@ exports.unmountComponentAtNode=function(a){if(!gk(a))throw Error(u(40));return a
 exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!gk(c))throw Error(u(200));if(null==a||void 0===a._reactInternalFiber)throw Error(u(38));return ik(a,b,c,!1,d)};exports.version="16.13.1";
 
 },{"object-assign":11,"react":26,"scheduler":31}],20:[function(require,module,exports){
-(function (process){
 'use strict';
 
 function checkDCE() {
@@ -27286,7 +27273,7 @@ function checkDCE() {
   ) {
     return;
   }
-  if (process.env.NODE_ENV !== 'production') {
+  if ("production" !== 'production') {
     // This branch is unreachable because this function is only called
     // in production, but the condition is true only in development.
     // Therefore if the branch is still here, dead code elimination wasn't
@@ -27306,7 +27293,7 @@ function checkDCE() {
   }
 }
 
-if (process.env.NODE_ENV === 'production') {
+if ("production" === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
@@ -27315,9 +27302,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports = require('./cjs/react-dom.development.js');
 }
 
-}).call(this,require('_process'))
-
-},{"./cjs/react-dom.development.js":18,"./cjs/react-dom.production.min.js":19,"_process":12}],21:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":18,"./cjs/react-dom.production.min.js":19}],21:[function(require,module,exports){
 (function (process){
 /** @license React v16.13.1
  * react-is.development.js
@@ -27533,7 +27518,6 @@ if (process.env.NODE_ENV === 'production') {
 }).call(this,require('_process'))
 
 },{"./cjs/react-is.development.js":21,"./cjs/react-is.production.min.js":22,"_process":12}],24:[function(require,module,exports){
-(function (process){
 /** @license React v16.13.1
  * react.development.js
  *
@@ -27547,7 +27531,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
-if (process.env.NODE_ENV !== "production") {
+if ("production" !== "production") {
   (function() {
 'use strict';
 
@@ -29447,9 +29431,7 @@ exports.version = ReactVersion;
   })();
 }
 
-}).call(this,require('_process'))
-
-},{"_process":12,"object-assign":11,"prop-types/checkPropTypes":13}],25:[function(require,module,exports){
+},{"object-assign":11,"prop-types/checkPropTypes":13}],25:[function(require,module,exports){
 /** @license React v16.13.1
  * react.production.min.js
  *
@@ -29477,19 +29459,15 @@ exports.lazy=function(a){return{$$typeof:A,_ctor:a,_status:-1,_result:null}};exp
 exports.useLayoutEffect=function(a,b){return Z().useLayoutEffect(a,b)};exports.useMemo=function(a,b){return Z().useMemo(a,b)};exports.useReducer=function(a,b,c){return Z().useReducer(a,b,c)};exports.useRef=function(a){return Z().useRef(a)};exports.useState=function(a){return Z().useState(a)};exports.version="16.13.1";
 
 },{"object-assign":11}],26:[function(require,module,exports){
-(function (process){
 'use strict';
 
-if (process.env.NODE_ENV === 'production') {
+if ("production" === 'production') {
   module.exports = require('./cjs/react.production.min.js');
 } else {
   module.exports = require('./cjs/react.development.js');
 }
 
-}).call(this,require('_process'))
-
-},{"./cjs/react.development.js":24,"./cjs/react.production.min.js":25,"_process":12}],27:[function(require,module,exports){
-(function (process){
+},{"./cjs/react.development.js":24,"./cjs/react.production.min.js":25}],27:[function(require,module,exports){
 /** @license React v0.19.1
  * scheduler-tracing.development.js
  *
@@ -29503,7 +29481,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 
-if (process.env.NODE_ENV !== "production") {
+if ("production" !== "production") {
   (function() {
 'use strict';
 
@@ -29840,9 +29818,7 @@ exports.unstable_wrap = unstable_wrap;
   })();
 }
 
-}).call(this,require('_process'))
-
-},{"_process":12}],28:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 /** @license React v0.19.1
  * scheduler-tracing.production.min.js
  *
@@ -29855,7 +29831,6 @@ exports.unstable_wrap = unstable_wrap;
 'use strict';var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_subscribe=function(){};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_unsubscribe=function(){};exports.unstable_wrap=function(a){return a};
 
 },{}],29:[function(require,module,exports){
-(function (process){
 /** @license React v0.19.1
  * scheduler.development.js
  *
@@ -29869,7 +29844,7 @@ exports.unstable_wrap = unstable_wrap;
 
 
 
-if (process.env.NODE_ENV !== "production") {
+if ("production" !== "production") {
   (function() {
 'use strict';
 
@@ -30715,9 +30690,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
   })();
 }
 
-}).call(this,require('_process'))
-
-},{"_process":12}],30:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /** @license React v0.19.1
  * scheduler.production.min.js
  *
@@ -30741,28 +30714,22 @@ exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();i
 exports.unstable_shouldYield=function(){var a=exports.unstable_now();V(a);var b=L(N);return b!==Q&&null!==Q&&null!==b&&null!==b.callback&&b.startTime<=a&&b.expirationTime<Q.expirationTime||k()};exports.unstable_wrapCallback=function(a){var b=R;return function(){var c=R;R=b;try{return a.apply(this,arguments)}finally{R=c}}};
 
 },{}],31:[function(require,module,exports){
-(function (process){
 'use strict';
 
-if (process.env.NODE_ENV === 'production') {
+if ("production" === 'production') {
   module.exports = require('./cjs/scheduler.production.min.js');
 } else {
   module.exports = require('./cjs/scheduler.development.js');
 }
 
-}).call(this,require('_process'))
-
-},{"./cjs/scheduler.development.js":29,"./cjs/scheduler.production.min.js":30,"_process":12}],32:[function(require,module,exports){
-(function (process){
+},{"./cjs/scheduler.development.js":29,"./cjs/scheduler.production.min.js":30}],32:[function(require,module,exports){
 'use strict';
 
-if (process.env.NODE_ENV === 'production') {
+if ("production" === 'production') {
   module.exports = require('./cjs/scheduler-tracing.production.min.js');
 } else {
   module.exports = require('./cjs/scheduler-tracing.development.js');
 }
 
-}).call(this,require('_process'))
-
-},{"./cjs/scheduler-tracing.development.js":27,"./cjs/scheduler-tracing.production.min.js":28,"_process":12}]},{},[5])
+},{"./cjs/scheduler-tracing.development.js":27,"./cjs/scheduler-tracing.production.min.js":28}]},{},[5])
 

@@ -1,0 +1,16 @@
+{
+  "instructions": "Gira las cartas y encuentra números. Alcanza la mayor suma posible en %turns turnos. Puedes volver a elegir una carta todas las veces que quieras.",
+  "draws": "turnos restantes",
+  "sum": "total",
+  "restart": "Volver a comenzar",
+  "final_result": "Resultado final:",
+  "result_better": "Esto es %percentage% <em>mejor</em> que la mejor estrategia promedio.",
+  "result_worse": "Esto es %percentage% <em>peor</em> que la mejor estrategia promedio.",
+  "explanation_1": "Para ganar en este juego es muy probable que hayas usado una estrategia de dos etapas:",
+  "explanation_2": "<strong>Explorar</strong>: Girar las cartas buscando números altos.",
+  "explanation_3": "<strong>Explotar</strong>: Elegir el valor más alto repetidas veces para maximizar el puntaje.",
+  "explanation_4": "Muchos sistemas de IA aprenden a realizar tareas usando estrategias con estas dos etapas. Alternan entre tomar el mejor curso de acción que conocen y explorar opciones nuevas que podrían traer mejores resultados.",
+  "analysis_chart_y_label": "Suma promedio",
+  "analysis_chart_x_label": "Número de turnos de exploración",
+  "play_again": "Volver a jugar"
+}

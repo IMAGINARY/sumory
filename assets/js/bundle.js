@@ -429,7 +429,7 @@ function SumoryAnalysis(props) {
               fontColor: '#fff'
             },
             scaleLabel: {
-              labelString: 'Number of turns of exploration',
+              labelString: strings.analysis_chart_x_label,
               display: true,
               fontSize: 18,
               fontColor: '#fff'
@@ -445,7 +445,7 @@ function SumoryAnalysis(props) {
               fontColor: '#fff'
             },
             scaleLabel: {
-              labelString: 'Average sum',
+              labelString: strings.analysis_chart_y_label,
               display: true,
               fontSize: 18,
               fontColor: '#fff'
@@ -462,13 +462,29 @@ function SumoryAnalysis(props) {
     className: "sumory-analysis"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-analysis-text"
-  }, /*#__PURE__*/_react["default"].createElement("span", null, "".concat(strings['final-result'], " ").concat(userSum)), /*#__PURE__*/_react["default"].createElement("br", null), /*#__PURE__*/_react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", null, "".concat(strings.final_result, " ").concat(userSum)), /*#__PURE__*/_react["default"].createElement("br", null), /*#__PURE__*/_react["default"].createElement("span", {
     dangerouslySetInnerHTML: {
-      __html: userSum > best ? "".concat(strings['better-0'], " ").concat((userSum / best * 100 - 100).toFixed(1), "% ").concat(strings['better-1']) : "".concat(strings['worse-0'], " ").concat((userSum / best * -100 + 100).toFixed(1), "% ").concat(strings['worse-1'])
+      __html: userSum > best ? "".concat(strings.result_better && strings.result_better.replace('%percentage', (userSum / best * 100 - 100).toFixed(1)) || '') : "".concat(strings.result_worse && strings.result_worse.replace('%percentage', (userSum / best * -100 + 100).toFixed(1)) || '')
     }
   })), /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-analysis-explanation"
-  }, /*#__PURE__*/_react["default"].createElement("p", null, "To win at this game, it's very likely you adopted a strategy with two phases:"), /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement("strong", null, "Explore: "), "Flip cards trying to find a high value."), /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement("strong", null, "Exploit: "), "Repeatedly pick the highest value found to maximize the score."), /*#__PURE__*/_react["default"].createElement("p", null, "Many AI systems learn to perform tasks by using strategies with these two phases. They alternate between taking the best-known course of action while at the same time exploring new options that could bring better results.")), /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("p", {
+    dangerouslySetInnerHTML: {
+      __html: strings.explanation_1
+    }
+  }), /*#__PURE__*/_react["default"].createElement("p", {
+    dangerouslySetInnerHTML: {
+      __html: strings.explanation_2
+    }
+  }), /*#__PURE__*/_react["default"].createElement("p", {
+    dangerouslySetInnerHTML: {
+      __html: strings.explanation_3
+    }
+  }), /*#__PURE__*/_react["default"].createElement("p", {
+    dangerouslySetInnerHTML: {
+      __html: strings.explanation_4
+    }
+  })), /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-analysis-chart"
   }, /*#__PURE__*/_react["default"].createElement("canvas", {
     width: "400",
@@ -642,7 +658,7 @@ function SumoryApp(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("span", {
     className: "fas fa-redo-alt fa-lg mr-2"
-  }), /*#__PURE__*/_react["default"].createElement("span", null, "Restart"))), /*#__PURE__*/_react["default"].createElement("div", {
+  }), /*#__PURE__*/_react["default"].createElement("span", null, strings.restart))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "right"
   }, Object.entries(config.languages).length > 1 && /*#__PURE__*/_react["default"].createElement(_dropdown["default"], {
     className: "lang-switcher",
@@ -673,7 +689,7 @@ function SumoryApp(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("span", {
     className: "fas fa-redo-alt fa-lg mr-2"
-  }), "Play again"))));
+  }), strings.play_again))));
 }
 
 SumoryApp.propTypes = {

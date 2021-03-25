@@ -77,7 +77,7 @@ export default function SumoryApp(props) {
             onClick={() => { restart(); }}
           >
             <span className="fas fa-redo-alt fa-lg mr-2" />
-            <span>Restart</span>
+            <span>{strings.restart}</span>
           </button>
         </div>
         <div className="right">
@@ -109,7 +109,7 @@ export default function SumoryApp(props) {
             <div className="text-center mt-5">
               <button type="button" className="s-btn" onClick={() => { restart(); }}>
                 <span className="fas fa-redo-alt fa-lg mr-2" />
-                Play again
+                {strings.play_again}
               </button>
             </div>
           </Modal>

@@ -40,7 +40,7 @@ export default function SumoryAnalysis(props) {
             gridLines: { color: '#666', zeroLineColor: '#fff' },
             ticks: { fontSize: 14, fontColor: '#fff' },
             scaleLabel: {
-              labelString: 'Number of turns of exploration',
+              labelString: strings.analysis_chart_x_label,
               display: true,
               fontSize: 18,
               fontColor: '#fff',
@@ -50,7 +50,7 @@ export default function SumoryAnalysis(props) {
             gridLines: { color: '#666', zeroLineColor: '#fff' },
             ticks: { fontSize: 14, fontColor: '#fff' },
             scaleLabel: {
-              labelString: 'Average sum',
+              labelString: strings.analysis_chart_y_label,
               display: true,
               fontSize: 18,
               fontColor: '#fff',
@@ -65,32 +65,20 @@ export default function SumoryAnalysis(props) {
   return (
     <div className="sumory-analysis">
       <div className="sumory-analysis-text">
-        <span>{`${strings['final-result']} ${userSum}`}</span>
+        <span>{`${strings.final_result} ${userSum}`}</span>
         <br />
         <span dangerouslySetInnerHTML={{
           __html: userSum > best
-            ? `${strings['better-0']} ${((userSum / best) * 100 - 100).toFixed(1)}% ${strings['better-1']}`
-            : `${strings['worse-0']} ${((userSum / best) * -100 + 100).toFixed(1)}% ${strings['worse-1']}`,
+            ? `${(strings.result_better && strings.result_better.replace('%percentage', ((userSum / best) * 100 - 100).toFixed(1))) || ''}`
+            : `${(strings.result_worse && strings.result_worse.replace('%percentage', ((userSum / best) * -100 + 100).toFixed(1))) || ''}`,
         }}
         />
       </div>
       <div className="sumory-analysis-explanation">
-        <p>
-          To win at this game, it&apos;s very likely you adopted a strategy with two phases:
-        </p>
-        <p>
-          <strong>Explore: </strong>
-          Flip cards trying to find a high value.
-        </p>
-        <p>
-          <strong>Exploit: </strong>
-          Repeatedly pick the highest value found to maximize the score.
-        </p>
-        <p>
-          Many AI systems learn to perform tasks by using strategies with these two phases.
-          They alternate between taking the best-known course of action while at the same
-          time exploring new options that could bring better results.
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: strings.explanation_1 }} />
+        <p dangerouslySetInnerHTML={{ __html: strings.explanation_2 }} />
+        <p dangerouslySetInnerHTML={{ __html: strings.explanation_3 }} />
+        <p dangerouslySetInnerHTML={{ __html: strings.explanation_4 }} />
       </div>
       <div className="sumory-analysis-chart">
         <canvas width="400" height="400" ref={canvasEl} />

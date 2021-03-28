@@ -2,6 +2,19 @@
 
 A simple game to teach explore vs exploit strategies in AI.
 
+## Configuration
+
+The `config.json` file supports the following properties:
+
+- **Languages**: Object where keys are 2-letter iso language codes and values are
+  language names. This is used to build the language switch menu. Each language
+  must have a corresponding translation file in the `tr` directory.
+- **defaultLanguage**: The application will start with this language by default.
+
+## Query string arguments
+
+- **lang**: Use a 2-letter iso language code to override the default language.
+
 ## Compilation
 
 This app is built using several compilable languages:

@@ -18,7 +18,10 @@ fetch('./config.json', { cache: 'no-store' })
     }).then(() => {
       $('[data-component="SumoryApp"]').each((i, element) => {
         ReactDOM.render(
-          <SumoryApp config={config} />,
+          <SumoryApp
+            config={Object.assign({}, config,
+              { defaultLanguage: IMAGINARY.i18n.getLang() })}
+          />,
           element
         );
       });

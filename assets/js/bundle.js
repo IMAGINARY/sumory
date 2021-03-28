@@ -258,7 +258,9 @@ fetch('./config.json', {
   }).then(function () {
     $('[data-component="SumoryApp"]').each(function (i, element) {
       _reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(_sumoryApp["default"], {
-        config: config
+        config: Object.assign({}, config, {
+          defaultLanguage: IMAGINARY.i18n.getLang()
+        })
       }), element);
     });
   });

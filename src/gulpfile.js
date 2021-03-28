@@ -126,10 +126,10 @@ function watch() {
   gulp.watch(paths.html.watchSrc || paths.html.src, html);
   gulp.watch(paths.styles.watchSrc || paths.styles.src, styles);
   gulp.watch(paths.dependencies.watchSrc || paths.dependencies.src, dependencies);
-  gulp.watch(paths.scripts.watchSrc || paths.scripts.src, scripts);
+  gulp.watch(paths.scripts.watchSrc || paths.scripts.src, scriptsProd);
 }
 
-const build = gulp.parallel(html, styles, scripts, dependencies);
+const build = gulp.parallel(html, styles, scriptsProd, dependencies);
 
 exports.html = html;
 exports.styles = styles;

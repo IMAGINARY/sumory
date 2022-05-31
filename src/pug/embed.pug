@@ -1,0 +1,7 @@
+extends tpl/page
+
+block stylesheets
+  link(rel='stylesheet', href!=asset('assets/css/embed.css'), media='all', type='text/css')
+
+block main
+  .sumory-container(data-component='SumoryApp', data-app-mode='embed')

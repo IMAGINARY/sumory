@@ -111,7 +111,7 @@ export default function SumoryApp(props) {
             turns={TURNS}
             userSum={gameStatus.score}
           />
-          <div className="text-center mt-5">
+          <div className="footer text-center mt-5">
             <button type="button" className="s-btn" onClick={() => { setAnalysisVisible(false); }}>
               <span className="fas fa-redo-alt fa-lg mr-2" />
               {strings.play_again}

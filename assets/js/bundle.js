@@ -259,7 +259,8 @@ fetch('./config.json', {
     $('[data-component="SumoryApp"]').each(function (i, element) {
       _reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(_sumoryApp["default"], {
         config: Object.assign({}, config, {
-          defaultLanguage: IMAGINARY.i18n.getLang()
+          defaultLanguage: IMAGINARY.i18n.getLang(),
+          appMode: $(element).data('app-mode') || 'default'
         })
       }), element);
     });
@@ -694,7 +695,7 @@ function SumoryApp(props) {
     turns: TURNS,
     userSum: gameStatus.score
   }), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "text-center mt-5"
+    className: "footer text-center mt-5"
   }, /*#__PURE__*/_react["default"].createElement("button", {
     type: "button",
     className: "s-btn",

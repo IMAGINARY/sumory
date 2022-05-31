@@ -1,5 +1,6 @@
 {
-  "bundle.min.js": "bundle-a0a78a5243.min.js",
+  "bundle.min.js": "bundle-64ca46079c.min.js",
   "default.css": "default-5ad5814466.css",
-  "dependencies.min.js": "dependencies-25c24c3c1f.min.js"
+  "dependencies.min.js": "dependencies-25c24c3c1f.min.js",
+  "embed.css": "embed-031d9ea374.css"
 }

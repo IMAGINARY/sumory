@@ -1,0 +1,86 @@
+.header {
+  text-align: center;
+  padding: 2em 0 0;
+
+  .instructions {
+    display: none;
+  }
+
+  .status {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    top: auto;
+
+    .status-box {
+      width: 30%;
+    }
+  }
+}
+
+.util-menu {
+  .left {
+    width: 100%;
+    text-align: center;
+  }
+
+  .right {
+    display: none;
+  }
+}
+
+.status-box {
+  .label {
+    position: relative;
+    font-size: 2.5em;
+    top: auto;
+  }
+
+  .value {
+    position: relative;
+    font-size: 5em;
+  }
+}
+
+.sumory-board {
+  position: relative;
+  top: auto;
+  padding: 1em 0 2.5em;
+
+  @media (max-aspect-ratio: 15/9) {
+    top: auto;
+  }
+}
+
+.util-menu {
+  position: relative;
+  height: auto;
+  bottom: auto;
+  left: auto;
+}
+
+.s-btn {
+  font-size: 2.5em;
+  padding: 0.75em 1.5em;
+  min-width: auto;
+  min-height: auto;
+}
+
+.s-modal-scroll {
+  position: absolute;
+  top: 0;
+}
+
+.sumory-analysis-explanation {
+  display: none;
+}
+
+.sumory-analysis .sumory-analysis-text {
+  margin-bottom: 0;
+}
+
+.s-modal-content {
+  .footer {
+    margin-top: 2.5em!important;;
+  }
+}

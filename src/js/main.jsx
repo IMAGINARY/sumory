@@ -20,7 +20,10 @@ fetch('./config.json', { cache: 'no-store' })
         ReactDOM.render(
           <SumoryApp
             config={Object.assign({}, config,
-              { defaultLanguage: IMAGINARY.i18n.getLang() })}
+              {
+                defaultLanguage: IMAGINARY.i18n.getLang(),
+                appMode: $(element).data('app-mode') || 'default',
+              })}
           />,
           element
         );

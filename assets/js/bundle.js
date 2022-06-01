@@ -242,6 +242,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 /* globals IMAGINARY */
 
 /* eslint-disable import/no-extraneous-dependencies */
+var urlSearchParams = new URLSearchParams(window.location.search);
 fetch('./config.json', {
   cache: 'no-store'
 }).then(function (response) {
@@ -260,7 +261,8 @@ fetch('./config.json', {
       _reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(_sumoryApp["default"], {
         config: Object.assign({}, config, {
           defaultLanguage: IMAGINARY.i18n.getLang(),
-          appMode: $(element).data('app-mode') || 'default'
+          appMode: $(element).data('app-mode') || 'default',
+          noChart: urlSearchParams.get('nochart') || false
         })
       }), element);
     });
@@ -376,7 +378,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function SumoryAnalysis(props) {
-  var strings = props.strings,
+  var config = props.config,
+      strings = props.strings,
       userSum = props.userSum,
       values = props.values,
       turns = props.turns;
@@ -386,82 +389,84 @@ function SumoryAnalysis(props) {
   var canvasEl = (0, _react.useRef)(null);
   var best = Math.max.apply(Math, _toConsumableArray(strategy));
   (0, _react.useEffect)(function () {
-    var chart = new Chart(canvasEl.current, {
-      type: 'bar',
-      data: {
-        labels: Array(strategy.length).fill(0).map(function (_, i) {
-          return i + 1;
-        }),
-        datasets: [{
-          data: strategy.map(function (value) {
-            return Math.round((value + Number.EPSILON) * 100) / 100;
+    if (!config.noChart) {
+      var chart = new Chart(canvasEl.current, {
+        type: 'bar',
+        data: {
+          labels: Array(strategy.length).fill(0).map(function (_, i) {
+            return i + 1;
           }),
-          backgroundColor: '#fff797',
-          borderColor: '#ffec02',
-          datalabels: {
-            color: '#fff',
-            font: {
-              size: 14
-            },
-            anchor: 'end',
-            align: 'top',
-            clamp: true
-          }
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        tooltips: {
-          enabled: false
-        },
-        hover: {
-          mode: null
-        },
-        layout: {
-          padding: {
-            top: 40
-          }
-        },
-        scales: {
-          xAxes: [{
-            gridLines: {
-              color: '#666',
-              zeroLineColor: '#fff'
-            },
-            ticks: {
-              fontSize: 14,
-              fontColor: '#fff'
-            },
-            scaleLabel: {
-              labelString: strings.analysis_chart_x_label,
-              display: true,
-              fontSize: 18,
-              fontColor: '#fff'
-            }
-          }],
-          yAxes: [{
-            gridLines: {
-              color: '#666',
-              zeroLineColor: '#fff'
-            },
-            ticks: {
-              fontSize: 14,
-              fontColor: '#fff'
-            },
-            scaleLabel: {
-              labelString: strings.analysis_chart_y_label,
-              display: true,
-              fontSize: 18,
-              fontColor: '#fff'
+          datasets: [{
+            data: strategy.map(function (value) {
+              return Math.round((value + Number.EPSILON) * 100) / 100;
+            }),
+            backgroundColor: '#fff797',
+            borderColor: '#ffec02',
+            datalabels: {
+              color: '#fff',
+              font: {
+                size: 14
+              },
+              anchor: 'end',
+              align: 'top',
+              clamp: true
             }
           }]
         },
-        legend: {
-          display: false
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          tooltips: {
+            enabled: false
+          },
+          hover: {
+            mode: null
+          },
+          layout: {
+            padding: {
+              top: 40
+            }
+          },
+          scales: {
+            xAxes: [{
+              gridLines: {
+                color: '#666',
+                zeroLineColor: '#fff'
+              },
+              ticks: {
+                fontSize: 14,
+                fontColor: '#fff'
+              },
+              scaleLabel: {
+                labelString: strings.analysis_chart_x_label,
+                display: true,
+                fontSize: 18,
+                fontColor: '#fff'
+              }
+            }],
+            yAxes: [{
+              gridLines: {
+                color: '#666',
+                zeroLineColor: '#fff'
+              },
+              ticks: {
+                fontSize: 14,
+                fontColor: '#fff'
+              },
+              scaleLabel: {
+                labelString: strings.analysis_chart_y_label,
+                display: true,
+                fontSize: 18,
+                fontColor: '#fff'
+              }
+            }]
+          },
+          legend: {
+            display: false
+          }
         }
-      }
-    });
+      });
+    }
   }, []);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-analysis"
@@ -489,7 +494,7 @@ function SumoryAnalysis(props) {
     dangerouslySetInnerHTML: {
       __html: strings.explanation_4
     }
-  })), /*#__PURE__*/_react["default"].createElement("div", {
+  })), !config.noChart && /*#__PURE__*/_react["default"].createElement("div", {
     className: "sumory-analysis-chart"
   }, /*#__PURE__*/_react["default"].createElement("canvas", {
     width: "400",

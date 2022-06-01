@@ -4,6 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SumoryApp from './sumory-app';
 
+const urlSearchParams = new URLSearchParams(window.location.search);
+
 fetch('./config.json', { cache: 'no-store' })
   .then((response) => {
     if (response.status >= 200 && response.status < 300) {
@@ -23,6 +25,7 @@ fetch('./config.json', { cache: 'no-store' })
               {
                 defaultLanguage: IMAGINARY.i18n.getLang(),
                 appMode: $(element).data('app-mode') || 'default',
+                noChart: urlSearchParams.get('nochart') || false,
               })}
           />,
           element

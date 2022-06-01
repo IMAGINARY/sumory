@@ -71,6 +71,15 @@
   top: 0;
 }
 
+.s-modal {
+  width: 95%;
+  margin: 4em auto 2em;
+}
+
+.s-modal-with-overlay.enter-active .s-modal, .s-modal-with-overlay.enter-done .s-modal, .s-modal-with-overlay.exit .s-modal {
+  margin-top: 4em;
+}
+
 .sumory-analysis-explanation {
   display: none;
 }

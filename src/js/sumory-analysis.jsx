@@ -5,61 +5,63 @@ import calculateStrategies from './helpers/sumory-strategy';
 
 export default function SumoryAnalysis(props) {
   const {
-    strings, userSum, values, turns,
+    config, strings, userSum, values, turns,
   } = props;
   const strategy = useMemo(() => calculateStrategies(values, turns), [values, turns]);
   const canvasEl = useRef(null);
   const best = Math.max(...strategy);
 
   useEffect(() => {
-    const chart = new Chart(canvasEl.current, {
-      type: 'bar',
-      data: {
-        labels: Array(strategy.length).fill(0).map((_, i) => i + 1),
-        datasets: [{
-          data: strategy.map(value => Math.round((value + Number.EPSILON) * 100) / 100),
-          backgroundColor: '#fff797',
-          borderColor: '#ffec02',
-          datalabels: {
-            color: '#fff',
-            font: { size: 14 },
-            anchor: 'end',
-            align: 'top',
-            clamp: true,
-          },
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        tooltips: { enabled: false },
-        hover: { mode: null },
-        layout: { padding: { top: 40 } },
-        scales: {
-          xAxes: [{
-            gridLines: { color: '#666', zeroLineColor: '#fff' },
-            ticks: { fontSize: 14, fontColor: '#fff' },
-            scaleLabel: {
-              labelString: strings.analysis_chart_x_label,
-              display: true,
-              fontSize: 18,
-              fontColor: '#fff',
-            },
-          }],
-          yAxes: [{
-            gridLines: { color: '#666', zeroLineColor: '#fff' },
-            ticks: { fontSize: 14, fontColor: '#fff' },
-            scaleLabel: {
-              labelString: strings.analysis_chart_y_label,
-              display: true,
-              fontSize: 18,
-              fontColor: '#fff',
+    if (!config.noChart) {
+      const chart = new Chart(canvasEl.current, {
+        type: 'bar',
+        data: {
+          labels: Array(strategy.length).fill(0).map((_, i) => i + 1),
+          datasets: [{
+            data: strategy.map(value => Math.round((value + Number.EPSILON) * 100) / 100),
+            backgroundColor: '#fff797',
+            borderColor: '#ffec02',
+            datalabels: {
+              color: '#fff',
+              font: { size: 14 },
+              anchor: 'end',
+              align: 'top',
+              clamp: true,
             },
           }],
         },
-        legend: { display: false },
-      },
-    });
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          tooltips: { enabled: false },
+          hover: { mode: null },
+          layout: { padding: { top: 40 } },
+          scales: {
+            xAxes: [{
+              gridLines: { color: '#666', zeroLineColor: '#fff' },
+              ticks: { fontSize: 14, fontColor: '#fff' },
+              scaleLabel: {
+                labelString: strings.analysis_chart_x_label,
+                display: true,
+                fontSize: 18,
+                fontColor: '#fff',
+              },
+            }],
+            yAxes: [{
+              gridLines: { color: '#666', zeroLineColor: '#fff' },
+              ticks: { fontSize: 14, fontColor: '#fff' },
+              scaleLabel: {
+                labelString: strings.analysis_chart_y_label,
+                display: true,
+                fontSize: 18,
+                fontColor: '#fff',
+              },
+            }],
+          },
+          legend: { display: false },
+        },
+      });
+    }
   }, []);
 
   return (
@@ -80,9 +82,12 @@ export default function SumoryAnalysis(props) {
         <p dangerouslySetInnerHTML={{ __html: strings.explanation_3 }} />
         <p dangerouslySetInnerHTML={{ __html: strings.explanation_4 }} />
       </div>
-      <div className="sumory-analysis-chart">
-        <canvas width="400" height="400" ref={canvasEl} />
-      </div>
+      {
+        !config.noChart &&
+        <div className="sumory-analysis-chart">
+          <canvas width="400" height="400" ref={canvasEl} />
+        </div>
+      }
     </div>
   );
 }

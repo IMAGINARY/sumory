@@ -14,6 +14,7 @@ The `config.json` file supports the following properties:
 ## Query string arguments
 
 - **lang**: Use a 2-letter iso language code to override the default language.
+- **nochart**: If set to true, the bar chart in the explanation won't be shown.
 
 ## Compilation
 

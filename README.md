@@ -15,6 +15,7 @@ The `config.json` file supports the following properties:
 
 - **lang**: Use a 2-letter iso language code to override the default language.
 - **nochart**: If set to true, the bar chart in the explanation won't be shown.
+- **cards**: 21 comma-separated integers to use as values 
 
 ## Compilation
 

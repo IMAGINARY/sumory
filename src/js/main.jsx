@@ -6,6 +6,13 @@ import SumoryApp from './sumory-app';
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 
+function validCardValues(definition) {
+  if (typeof definition === 'string' && definition.match(/^-?\d+(,-?\d+)*$/)) {
+    return definition.split(',').map(v => parseInt(v));
+  }
+  return null;
+}
+
 fetch('./config.json', { cache: 'no-store' })
   .then((response) => {
     if (response.status >= 200 && response.status < 300) {
@@ -26,6 +33,7 @@ fetch('./config.json', { cache: 'no-store' })
                 defaultLanguage: IMAGINARY.i18n.getLang(),
                 appMode: $(element).data('app-mode') || 'default',
                 noChart: urlSearchParams.get('nochart') || false,
+                cardValues: validCardValues(urlSearchParams.get('cards'))
               })}
           />,
           element

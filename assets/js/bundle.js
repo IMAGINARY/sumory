@@ -243,6 +243,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 /* eslint-disable import/no-extraneous-dependencies */
 var urlSearchParams = new URLSearchParams(window.location.search);
+
+function validCardValues(definition) {
+  if (typeof definition === 'string' && definition.match(/^-?\d+(,-?\d+)*$/)) {
+    return definition.split(',').map(function (v) {
+      return parseInt(v);
+    });
+  }
+
+  return null;
+}
+
 fetch('./config.json', {
   cache: 'no-store'
 }).then(function (response) {
@@ -262,7 +273,8 @@ fetch('./config.json', {
         config: Object.assign({}, config, {
           defaultLanguage: IMAGINARY.i18n.getLang(),
           appMode: $(element).data('app-mode') || 'default',
-          noChart: urlSearchParams.get('nochart') || false
+          noChart: urlSearchParams.get('nochart') || false,
+          cardValues: validCardValues(urlSearchParams.get('cards'))
         })
       }), element);
     });
@@ -571,7 +583,7 @@ function SumoryApp(props) {
       strings = _useState4[0],
       setStrings = _useState4[1];
 
-  var _useState5 = (0, _react.useState)((0, _sumoryRandom.generateValues)(CARD_COUNT)),
+  var _useState5 = (0, _react.useState)(config.cardValues && config.cardValues.length === CARD_COUNT ? config.cardValues : (0, _sumoryRandom.generateValues)(CARD_COUNT)),
       _useState6 = _slicedToArray(_useState5, 2),
       cardValues = _useState6[0],
       setCardValues = _useState6[1];

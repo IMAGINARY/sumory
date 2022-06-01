@@ -15,7 +15,10 @@ export default function SumoryApp(props) {
   const { config } = props;
   const [language, setLanguage] = useState(config.defaultLanguage || 'en');
   const [strings, setStrings] = useState({});
-  const [cardValues, setCardValues] = useState(generateValues(CARD_COUNT));
+  const [cardValues, setCardValues] = useState(
+    config.cardValues && config.cardValues.length === CARD_COUNT ?
+      config.cardValues : generateValues(CARD_COUNT)
+  );
   const [gameNumber, setGameNumber] = useState(1);
   const [gameStatus, setGameStatus] = useState({ score: 0, turnsLeft: TURNS });
   const [analysisVisible, setAnalysisVisible] = useState(false);

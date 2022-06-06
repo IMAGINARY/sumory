@@ -17,6 +17,11 @@ The `config.json` file supports the following properties:
 - **nochart**: If set to true, the bar chart in the explanation won't be shown.
 - **cards**: 21 comma-separated integers to use as values 
 
+## Entry points
+
+- **index.html**: For use as an exhibit or web app.
+- **embed.html**: To embed it on e-learning courses and the like.
+
 ## Compilation
 
 This app is built using several compilable languages:

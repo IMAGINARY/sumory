@@ -13,12 +13,13 @@ export default function SumoryApp(props) {
   const TURNS = 10;
   const ANIMATION_TIMEOUT = 500;
   const { config } = props;
+
+  const resetCardValues = () => config.cardValues && config.cardValues.length === CARD_COUNT ?
+    config.cardValues : generateValues(CARD_COUNT);
+
   const [language, setLanguage] = useState(config.defaultLanguage || 'en');
   const [strings, setStrings] = useState({});
-  const [cardValues, setCardValues] = useState(
-    config.cardValues && config.cardValues.length === CARD_COUNT ?
-      config.cardValues : generateValues(CARD_COUNT)
-  );
+  const [cardValues, setCardValues] = useState(resetCardValues());
   const [gameNumber, setGameNumber] = useState(1);
   const [gameStatus, setGameStatus] = useState({ score: 0, turnsLeft: TURNS });
   const [analysisVisible, setAnalysisVisible] = useState(false);
@@ -48,7 +49,7 @@ export default function SumoryApp(props) {
   function restart() {
     setGameNumber(gameNumber + 1);
     setGameStatus({ score: 0, turnsLeft: TURNS });
-    setCardValues(generateValues(CARD_COUNT));
+    setCardValues(resetCardValues());
   }
 
   return (

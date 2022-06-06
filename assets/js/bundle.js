@@ -549,6 +549,8 @@ var _sumoryRandom = require("./helpers/sumory-random");
 
 var _sumoryAnalysis = _interopRequireDefault(require("./sumory-analysis"));
 
+var _aux = require("./helpers/aux");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -574,7 +576,7 @@ function SumoryApp(props) {
   var config = props.config;
 
   var resetCardValues = function resetCardValues() {
-    return config.cardValues && config.cardValues.length === CARD_COUNT ? config.cardValues : (0, _sumoryRandom.generateValues)(CARD_COUNT);
+    return config.cardValues && config.cardValues.length === CARD_COUNT ? (0, _aux.shuffle)(config.cardValues) : (0, _sumoryRandom.generateValues)(CARD_COUNT);
   };
 
   var _useState = (0, _react.useState)(config.defaultLanguage || 'en'),
@@ -735,7 +737,7 @@ SumoryApp.propTypes = {
   }).isRequired
 };
 
-},{"./dropdown":1,"./helpers/sumory-random":3,"./modal":6,"./sumory-analysis":7,"./sumory-game":9,"prop-types":20,"react":40,"react-transition-group":35}],9:[function(require,module,exports){
+},{"./dropdown":1,"./helpers/aux":2,"./helpers/sumory-random":3,"./modal":6,"./sumory-analysis":7,"./sumory-game":9,"prop-types":20,"react":40,"react-transition-group":35}],9:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }

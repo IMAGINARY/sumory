@@ -7,6 +7,7 @@ import Modal from './modal';
 import SumoryGame from './sumory-game';
 import { generateValues } from './helpers/sumory-random';
 import SumoryAnalysis from './sumory-analysis';
+import { shuffle } from './helpers/aux';
 
 export default function SumoryApp(props) {
   const CARD_COUNT = 21;
@@ -15,7 +16,7 @@ export default function SumoryApp(props) {
   const { config } = props;
 
   const resetCardValues = () => config.cardValues && config.cardValues.length === CARD_COUNT ?
-    config.cardValues : generateValues(CARD_COUNT);
+    shuffle(config.cardValues) : generateValues(CARD_COUNT);
 
   const [language, setLanguage] = useState(config.defaultLanguage || 'en');
   const [strings, setStrings] = useState({});

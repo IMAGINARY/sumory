@@ -1,7 +1,8 @@
 {
   "languages": {
     "en": "English",
-    "de": "Deutsch"
+    "de": "Deutsch",
+    "nl": "Nederlands"
   },
   "defaultLanguage": "en"
 }

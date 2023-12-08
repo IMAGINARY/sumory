@@ -1,0 +1,16 @@
+{
+  "instructions": "Draai kaarten om om getallen te onthullen. Je hebt %turns om de hoogst mogelijke som te bereiken. Je kunt een reeds omgedraaide kaart zo vaak kiezen als je wilt. ",
+  "draws": "draait naar links",
+  "sum": "totaal",
+  "restart": "Herstart",
+  "final_result": "Eindresultaat :",
+  "result_better": "Dit is %percentage% <em>beter</em> dan de gemiddelde beste strategie.",
+  "result_worse": "Dit is %percentage% <em>slechter</em> dan de gemiddelde beste strategie.",
+  "explanation_1": "Om dit spel te winnen heb je waarschijnlijk een strategie met twee fasen gekozen:",
+  "explanation_2": "<strong>Ontdekken: </strong> Kaarten omdraaien om een hoge waarde te vinden.",
+  "explanation_3": "<strong>Exploiteren : </strong> Kies meermaals de hoogste gevonden waarde om de score te maximaliseren.",
+  "explanation_4": "Veel AI-systemen leren taken uit te voeren door het gebruiken van strategieën met deze twee fasen. Ze nemen afwisselend de welbekende handelswijze en proberen tegelijkertijd nieuwe opties te ontdekken die betere resultaten kunnen opleveren.",
+  "analysis_chart_y_label": "Gemiddelde som",
+  "analysis_chart_x_label": "Aantal exploratiebeurten",
+  "play_again": "Opnieuw spelen"
+}

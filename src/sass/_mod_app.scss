@@ -25,14 +25,19 @@
 
   }
 
-  .left, .right {
+  .util-menu-col {
     display: inline-block;
     width: 50%;
     padding: 0.8em 1em;
   }
 
-  .right {
+  .util-menu-col:last-child {
     text-align: right;
+  }
+
+  .util-menu-col:first-child:last-child {
+    width: 100%;
+    text-align: center;
   }
 }
 

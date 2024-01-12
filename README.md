@@ -10,12 +10,13 @@ The `config.json` file supports the following properties:
   language names. This is used to build the language switch menu. Each language
   must have a corresponding translation file in the `tr` directory.
 - **defaultLanguage**: The application will start with this language by default.
+- **showLanguageSwitcher**: If set to false, the language switch menu won't be shown.
 
 ## Query string arguments
 
 - **lang**: Use a 2-letter iso language code to override the default language.
 - **nochart**: If set to true, the bar chart in the explanation won't be shown.
-- **cards**: 21 comma-separated integers to use as values 
+- **cards**: 21 comma-separated integers to use as values.
 
 ## Entry points
 

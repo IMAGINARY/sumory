@@ -28,7 +28,9 @@ fetch('./config.json', { cache: 'no-store' })
       $('[data-component="SumoryApp"]').each((i, element) => {
         ReactDOM.render(
           <SumoryApp
-            config={Object.assign({}, config,
+            config={Object.assign({}, {
+                showLanguageSwitcher: true,
+              }, config,
               {
                 defaultLanguage: IMAGINARY.i18n.getLang(),
                 appMode: $(element).data('app-mode') || 'default',

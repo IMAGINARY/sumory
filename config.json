@@ -4,5 +4,6 @@
     "de": "Deutsch",
     "nl": "Nederlands"
   },
-  "defaultLanguage": "en"
+  "defaultLanguage": "en",
+  "showLanguageSwitcher": false
 }

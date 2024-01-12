@@ -372,13 +372,17 @@ body.with-modal {
   bottom: 0;
   left: 0;
 }
-.util-menu .left, .util-menu .right {
+.util-menu .util-menu-col {
   display: inline-block;
   width: 50%;
   padding: 0.8em 1em;
 }
-.util-menu .right {
+.util-menu .util-menu-col:last-child {
   text-align: right;
+}
+.util-menu .util-menu-col:first-child:last-child {
+  width: 100%;
+  text-align: center;
 }
 
 .status {
@@ -414,4 +418,4 @@ body.with-modal {
   text-transform: uppercase;
   color: #a5a5a5;
 }
-/*# sourceMappingURL=default-1f18d28178.css.map */
+/*# sourceMappingURL=default-5515154c66.css.map */

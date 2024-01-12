@@ -270,7 +270,9 @@ fetch('./config.json', {
   }).then(function () {
     $('[data-component="SumoryApp"]').each(function (i, element) {
       _reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(_sumoryApp["default"], {
-        config: Object.assign({}, config, {
+        config: Object.assign({}, {
+          showLanguageSwitcher: true
+        }, config, {
           defaultLanguage: IMAGINARY.i18n.getLang(),
           appMode: $(element).data('app-mode') || 'default',
           noChart: urlSearchParams.get('nochart') || false,
@@ -613,6 +615,7 @@ function SumoryApp(props) {
       setAnalysisVisible = _useState12[1];
 
   var instructions = strings.instructions && strings.instructions.replace('%turns', TURNS) || '';
+  var showLanguageSwitcher = Object.entries(config.languages).length > 1 && config.showLanguageSwitcher !== false;
   (0, _react.useEffect)(function () {
     IMAGINARY.i18n.setLang(language).then(function () {
       setStrings(IMAGINARY.i18n.getStrings());
@@ -679,7 +682,7 @@ function SumoryApp(props) {
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "util-menu"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "left"
+    className: "util-menu-col"
   }, /*#__PURE__*/_react["default"].createElement("button", {
     type: "button",
     className: "s-btn restart",
@@ -688,9 +691,9 @@ function SumoryApp(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("span", {
     className: "fas fa-redo-alt fa-lg mr-2"
-  }), /*#__PURE__*/_react["default"].createElement("span", null, strings.restart))), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "right"
-  }, Object.entries(config.languages).length > 1 && /*#__PURE__*/_react["default"].createElement(_dropdown["default"], {
+  }), /*#__PURE__*/_react["default"].createElement("span", null, strings.restart))), showLanguageSwitcher && /*#__PURE__*/_react["default"].createElement("div", {
+    className: "util-menu-col"
+  }, /*#__PURE__*/_react["default"].createElement(_dropdown["default"], {
     className: "lang-switcher",
     items: config.languages,
     selected: language,

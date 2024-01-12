@@ -26,6 +26,8 @@ export default function SumoryApp(props) {
   const [analysisVisible, setAnalysisVisible] = useState(false);
 
   const instructions = (strings.instructions && strings.instructions.replace('%turns', TURNS)) || '';
+  const showLanguageSwitcher = Object.entries(config.languages).length > 1
+    && config.showLanguageSwitcher !== false;
 
   useEffect(() => {
     IMAGINARY.i18n.setLang(language).then(() => {
@@ -76,7 +78,7 @@ export default function SumoryApp(props) {
         onUpdate={handleGameUpdate}
       />
       <div className="util-menu">
-        <div className="left">
+        <div className="util-menu-col">
           <button
             type="button"
             className="s-btn restart"
@@ -86,8 +88,8 @@ export default function SumoryApp(props) {
             <span>{strings.restart}</span>
           </button>
         </div>
-        <div className="right">
-          { Object.entries(config.languages).length > 1 && (
+        { showLanguageSwitcher && (
+          <div className="util-menu-col">
             <Dropdown
               className="lang-switcher"
               items={config.languages}
@@ -97,9 +99,8 @@ export default function SumoryApp(props) {
               <span className="fas fa-caret-left mr-2" />
               <span className="fas fa-language fa-2x mr-2" />
             </Dropdown>
-          )
-          }
-        </div>
+          </div>
+        )}
       </div>
       <CSSTransition
         in={analysisVisible}

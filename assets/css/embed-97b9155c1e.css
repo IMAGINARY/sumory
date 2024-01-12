@@ -1,0 +1,86 @@
+.header {
+  text-align: center;
+  padding: 2em 0 0;
+}
+.header .instructions {
+  display: none;
+}
+.header .status {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  top: auto;
+}
+.header .status .status-box {
+  width: 30%;
+}
+
+.util-menu .left {
+  width: 100%;
+  text-align: center;
+}
+.util-menu .right {
+  display: none;
+}
+
+.status-box .label {
+  position: relative;
+  font-size: 2.5em;
+  top: auto;
+}
+.status-box .value {
+  position: relative;
+  font-size: 5em;
+}
+
+.sumory-board {
+  position: relative;
+  top: auto;
+  padding: 1em 0 2.5em;
+}
+@media (max-aspect-ratio: 15/9) {
+  .sumory-board {
+    top: auto;
+  }
+}
+
+.util-menu {
+  position: relative;
+  height: auto;
+  bottom: auto;
+  left: auto;
+}
+
+.s-btn {
+  font-size: 2.5em;
+  padding: 0.75em 1.5em;
+  min-width: auto;
+  min-height: auto;
+}
+
+.s-modal-scroll {
+  position: absolute;
+  top: 0;
+}
+
+.s-modal {
+  width: 95%;
+  margin: 4em auto 2em;
+}
+
+.s-modal-with-overlay.enter-active .s-modal, .s-modal-with-overlay.enter-done .s-modal, .s-modal-with-overlay.exit .s-modal {
+  margin-top: 4em;
+}
+
+.sumory-analysis-explanation {
+  display: none;
+}
+
+.sumory-analysis .sumory-analysis-text {
+  margin-bottom: 0;
+}
+
+.s-modal-content .footer {
+  margin-top: 2.5em !important;
+}
+/*# sourceMappingURL=embed-97b9155c1e.css.map */

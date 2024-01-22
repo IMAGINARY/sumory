@@ -2,7 +2,8 @@
   "languages": {
     "en": "English",
     "de": "Deutsch",
-    "fr": "Français"
+    "fr": "Français",
+    "es": "Español"
   },
   "defaultLanguage": "en"
 }

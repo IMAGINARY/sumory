@@ -15,7 +15,7 @@ The `config.json` file supports the following properties:
 
 - **lang**: Use a 2-letter iso language code to override the default language.
 - **nochart**: If set to true, the bar chart in the explanation won't be shown.
-- **cards**: 21 comma-separated integers to use as values 
+- **cards**: 21 comma-separated integers to use as values
 
 ## Entry points
 
@@ -28,7 +28,7 @@ This app is built using several compilable languages:
 
 - The HTML pages are built from **pug** template files.
 - The CSS stylesheet is pre-compiled from **sass** files.
-- The JS scripts are trans-compiled from **es6** (ES2015) files. 
+- The JS scripts are trans-compiled from **es6** (ES2015) files.
 
 To make any modifications re-compilation is necessary. You should install:
 
@@ -46,29 +46,32 @@ yarn
 After it runs succesfuly you can compile as needed:
 
 - **sass (stylesheets)**
-    ```
-    gulp styles
-    ```
-  
+  ```
+  gulp styles
+  ```
 - **scripts (ES6)**
-    ```
-    gulp scripts
-    ```
+
+  ```
+  gulp scripts
+  ```
 
 - **pug (HTML pages)**
-    ```
-    gulp html
-    ```
+
+  ```
+  gulp html
+  ```
 
 - **all**
-    ```
-    yarn run build
-    ```
-  
+  ```
+  yarn run build
+  ```
+
 ## Credits
 
 Original concept by Aaron Montag and Andreas Daniel Matt.
 Developed by Eric Londaits for IMAGINARY gGmbH.
+
+Spanish and French translations by Daniel Ramos.
 
 ## License
 

@@ -1,0 +1,16 @@
+{
+  "instructions": "Retournez les cartes pour révéler des numéros. Vous disposez de %turns tours pour atteindre la somme la plus élevée possible. Vous pouvez choisir une carte déjà retournée autant de fois que vous le souhaitez.",
+  "draws": "tours restants",
+  "sum": "somme",
+  "restart": "Redémarrer",
+  "final_result": "Résultat final:",
+  "result_better": "Votre résultat est <em>meilleur</em> de %percentage&nbsp;% que la meilleure stratégie moyenne.",
+  "result_worse": "Votre résultat est <em>pire</em> de %percentage&nbsp;% que la meilleure stratégie moyenne.",
+  "explanation_1": "Pour gagner à ce jeu, il est fort probable que vous avez adopté une stratégie qui consiste en deux étapes :",
+  "explanation_2": "<strong>Explorer : </strong> Retourner les cartes en essayant de trouver une valeur élevée.",
+  "explanation_3": "<strong>Exploiter : </strong> Sélectionner à plusieurs reprises la valeur la plus élevée trouvée pour maximiser le résultat.",
+  "explanation_4": "De nombreux systèmes d'IA apprennent à effectuer des tâches en utilisant des stratégies avec ces deux étapes. Ils alternent entre suivre le meilleur plan d'action connu et explorer de nouvelles options qui pourraient apporter de meilleurs résultats.",
+  "analysis_chart_y_label": "Somme moyenne",
+  "analysis_chart_x_label": "Nombre de tours d'exploration",
+  "play_again": "Jouer à nouveau"
+}

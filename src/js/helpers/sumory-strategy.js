@@ -18,7 +18,7 @@ function evaluateStrategy(values, turns, exploitStart) {
   return total;
 }
 
-function calculateStrategiesMonteCarlo(values, turns, iterations) {
+export function calculateStrategiesMonteCarlo(values, turns, iterations = 1000000) {
   const strategies = Array(turns).fill(0);
 
   for (let i = 0; i < iterations; i += 1) {
@@ -34,7 +34,7 @@ function calculateStrategiesMonteCarlo(values, turns, iterations) {
   return strategies;
 }
 
-function calculateStrategiesDeterministically(values, turns, iterations) {
+export function calculateStrategiesDeterministically(values, turns) {
   const strategies = Array(turns).fill(0);
 
   // We need the sorted values for the exploit phase ...
@@ -78,8 +78,4 @@ function calculateStrategiesDeterministically(values, turns, iterations) {
   }
 
   return strategies;
-}
-
-export default function calculateStrategies(values, turns, iterations = 1000000) {
-  return calculateStrategiesDeterministically(values, turns, iterations);
 }

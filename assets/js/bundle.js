@@ -186,7 +186,8 @@ function generateRatings(count) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = calculateStrategies;
+exports.calculateStrategiesMonteCarlo = calculateStrategiesMonteCarlo;
+exports.calculateStrategiesDeterministically = calculateStrategiesDeterministically;
 
 var _aux = require("./aux");
 
@@ -221,7 +222,8 @@ function evaluateStrategy(values, turns, exploitStart) {
   return total;
 }
 
-function calculateStrategiesMonteCarlo(values, turns, iterations) {
+function calculateStrategiesMonteCarlo(values, turns) {
+  var iterations = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1000000;
   var strategies = Array(turns).fill(0);
 
   for (var i = 0; i < iterations; i += 1) {
@@ -239,7 +241,7 @@ function calculateStrategiesMonteCarlo(values, turns, iterations) {
   return strategies;
 }
 
-function calculateStrategiesDeterministically(values, turns, iterations) {
+function calculateStrategiesDeterministically(values, turns) {
   var strategies = Array(turns).fill(0); // We need the sorted values for the exploit phase ...
 
   var valuesSorted = _toConsumableArray(values).sort(function (a, b) {
@@ -286,11 +288,6 @@ function calculateStrategiesDeterministically(values, turns, iterations) {
   }
 
   return strategies;
-}
-
-function calculateStrategies(values, turns) {
-  var iterations = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1000000;
-  return calculateStrategiesDeterministically(values, turns, iterations);
 }
 
 },{"./aux":2}],5:[function(require,module,exports){
@@ -436,7 +433,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _sumoryStrategy = _interopRequireDefault(require("./helpers/sumory-strategy"));
+var _sumoryStrategy = require("./helpers/sumory-strategy");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -463,7 +460,7 @@ function SumoryAnalysis(props) {
       values = props.values,
       turns = props.turns;
   var strategy = (0, _react.useMemo)(function () {
-    return (0, _sumoryStrategy["default"])(values, turns);
+    return (0, _sumoryStrategy.calculateStrategiesDeterministically)(values, turns);
   }, [values, turns]);
   var canvasEl = (0, _react.useRef)(null);
   var best = Math.max.apply(Math, _toConsumableArray(strategy));

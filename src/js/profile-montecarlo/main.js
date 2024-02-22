@@ -1,4 +1,4 @@
-import calculateStrategies from '../helpers/sumory-strategy.js';
+import { calculateStrategiesMonteCarlo } from '../helpers/sumory-strategy.js';
 import { generateValues } from '../helpers/sumory-random.js';
 
 const CARD_COUNT = 21;
@@ -12,10 +12,10 @@ const zip = (a, b) => a.map((k, i) => [k, b[i]]);
 
 const values = generateValues(CARD_COUNT);
 
-const stratVHigh = calculateStrategies(values, TURNS, ITERATIONS_VHIGH);
-const stratHigh = calculateStrategies(values, TURNS, ITERATIONS_HIGH);
-const stratMid = calculateStrategies(values, TURNS, ITERATIONS_MID);
-const stratLow = calculateStrategies(values, TURNS, ITERATIONS_LOW);
+const stratVHigh = calculateStrategiesMonteCarlo(values, TURNS, ITERATIONS_VHIGH);
+const stratHigh = calculateStrategiesMonteCarlo(values, TURNS, ITERATIONS_HIGH);
+const stratMid = calculateStrategiesMonteCarlo(values, TURNS, ITERATIONS_MID);
+const stratLow = calculateStrategiesMonteCarlo(values, TURNS, ITERATIONS_LOW);
 
 console.log(`Differences ${ITERATIONS_HIGH} vs ${ITERATIONS_LOW}`);
 console.log(zip(stratHigh, stratLow).map(([a, b]) => Math.abs(a - b)));

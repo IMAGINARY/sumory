@@ -1,13 +1,16 @@
 /* globals Chart */
 import React, { useMemo, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import calculateStrategies from './helpers/sumory-strategy';
+import { calculateStrategiesDeterministically } from './helpers/sumory-strategy';
 
 export default function SumoryAnalysis(props) {
   const {
     config, strings, userSum, values, turns,
   } = props;
-  const strategy = useMemo(() => calculateStrategies(values, turns), [values, turns]);
+  const strategy = useMemo(() =>
+    calculateStrategiesDeterministically(values, turns),
+    [values, turns]
+  );
   const canvasEl = useRef(null);
   const best = Math.max(...strategy);
 
